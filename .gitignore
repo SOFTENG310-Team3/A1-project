@@ -41,3 +41,4 @@ build/
 ## JAR Builds
 **/META-INF/**
 *.jar
+/bin/
