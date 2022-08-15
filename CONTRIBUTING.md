@@ -1,10 +1,10 @@
-#Getting Started
+# Getting Started
 
 To get started, create a fork of this repository and clone it.
 
-#How to Contribute
+# How to Contribute
 
-##🛠Contributing Code
+## 🛠 Contributing Code
 
 You can contribute code via a pull request to suggest changes to our repository.
 
@@ -21,7 +21,7 @@ You can contribute code via a pull request to suggest changes to our repository.
 	- If the issue had more than one contributor assigned, state this in the pull request body
 - Your pull request will then be reviewed and approved by a team member
 
-##🔎Code Reviews 
+## 🔎 Code Reviews 
 
 When another team member has an open pull request, you are able to perform a code review of their contribution.
 
@@ -37,7 +37,7 @@ When another team member has an open pull request, you are able to perform a cod
 	- The necessary changes must be approved by the original reviewer
 - Any team member can then squash and merge the contribution to the main repository 
 
-##🐞Creating New Issues 
+## 🐞 Creating New Issues 
 
 You can create an issue if you identify a bug, errors in documentation or would like to request a new feature.
 
@@ -54,7 +54,7 @@ Creating your issue:
 	- Documentation: Identify what part of the documentation requires updating and why
 - Attach any other appropriate labels to the issue. 
 
-##✅Approving Issues
+## ✅ Approving Issues
 
 Before an issue is addressed, it must be approved. 
 
