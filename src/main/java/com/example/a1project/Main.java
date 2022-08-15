@@ -14,7 +14,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         
-    	Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
+    	Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
     	Scene scene = new Scene(root);
     	
     	stage.setTitle("My To Do's");
