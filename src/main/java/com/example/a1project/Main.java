@@ -3,6 +3,7 @@ package com.example.a1project;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -13,7 +14,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         
-    	Group root = new Group();
+    	Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
     	Scene scene = new Scene(root);
     	
     	stage.setTitle("My To Do's");
