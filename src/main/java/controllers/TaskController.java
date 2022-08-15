@@ -1,4 +1,4 @@
-package com.example.a1project.controllers;
+package controllers;
 
 public class TaskController extends SceneController {
 
