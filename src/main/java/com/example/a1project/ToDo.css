@@ -1,0 +1,10 @@
+.button { 
+	-fx-background-color: #77B3D4;
+	-fx-background-radius: 20;
+	-fx-font-family: "Avenir Next";
+	-fx-font-size: 48;
+}
+
+.button:hover { 
+	-fx-background-color: #a8daf5;
+}
