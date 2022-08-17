@@ -1,5 +1,9 @@
 .root {
 	-fx-background-color: #ffffff;
+	-fx-background-radius: 25;
+	-fx-border-color: #77B3D4;
+	-fx-border-width: 6 6 6 6;
+	-fx-border-radius: 20;
 }
 
 #addTaskButton { 
@@ -61,4 +65,8 @@
 	-fx-font-family: "Avenir Next";
 	-fx-font-size: 24;
 	-fx-font-weight: bold; 
+}
+
+#closeButton:hover { 
+	-fx-background-color: #a8daf5;
 }

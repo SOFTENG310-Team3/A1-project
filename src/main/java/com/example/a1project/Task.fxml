@@ -11,14 +11,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="700.0" maxWidth="600.0" minHeight="700.0" minWidth="800.0" prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.a1project.controllers.TaskController">
    <children>
-      <VBox layoutX="20.0" layoutY="29.0" prefHeight="650.0" prefWidth="709.0">
+      <VBox layoutX="27.0" layoutY="29.0" prefHeight="650.0" prefWidth="702.0">
          <children>
             <TextField fx:id="taskTextField" prefHeight="70.0" prefWidth="709.0" promptText="Task Description">
                <VBox.margin>
-                  <Insets />
+                  <Insets bottom="20.0" />
                </VBox.margin>
             </TextField>
             <HBox prefHeight="483.0" prefWidth="709.0">
@@ -29,49 +28,75 @@
                            <font>
                               <Font size="26.0" />
                            </font>
+                           <VBox.margin>
+                              <Insets bottom="30.0" />
+                           </VBox.margin>
                         </Label>
                         <Label prefHeight="70.0" prefWidth="148.0" text="Category:">
                            <font>
                               <Font size="26.0" />
                            </font>
+                           <VBox.margin>
+                              <Insets bottom="30.0" />
+                           </VBox.margin>
                         </Label>
                         <Label prefHeight="70.0" prefWidth="167.0" text="Due Date:">
                            <font>
                               <Font size="26.0" />
                            </font>
+                           <VBox.margin>
+                              <Insets bottom="30.0" />
+                           </VBox.margin>
                         </Label>
                         <Label prefHeight="70.0" prefWidth="167.0" text="Repeat:">
                            <font>
                               <Font size="26.0" />
                            </font>
+                           <VBox.margin>
+                              <Insets bottom="30.0" />
+                           </VBox.margin>
                         </Label>
                         <Label prefHeight="70.0" prefWidth="167.0" text="Priority:">
                            <font>
                               <Font size="26.0" />
                            </font>
+                           <VBox.margin>
+                              <Insets bottom="30.0" />
+                           </VBox.margin>
                         </Label>
                      </children>
                   </VBox>
                   <VBox alignment="TOP_RIGHT" prefHeight="528.0" prefWidth="555.0">
                      <children>
-                        <TextField fx:id="locationTexField" prefHeight="70.0" prefWidth="626.0" promptText="Enter Location" />
-                        <ComboBox fx:id="categoryBox" prefHeight="70.0" prefWidth="629.0" promptText="Select Category" />
+                        <TextField fx:id="locationTexField" prefHeight="70.0" prefWidth="626.0" promptText="Enter Location">
+                           <VBox.margin>
+                              <Insets bottom="30.0" />
+                           </VBox.margin>
+                        </TextField>
+                        <ComboBox fx:id="categoryBox" prefHeight="70.0" prefWidth="629.0" promptText="Select Category">
+                           <VBox.margin>
+                              <Insets bottom="30.0" />
+                           </VBox.margin>
+                        </ComboBox>
                         <HBox alignment="TOP_RIGHT" prefHeight="55.0" prefWidth="596.0">
                            <children>
-                              <TextField fx:id="dayTextField" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="253.0" promptText="dd/mm/yy">
+                              <TextField fx:id="dayTextField" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="224.0" promptText="dd/mm/yy">
                                  <HBox.margin>
-                                    <Insets />
+                                    <Insets right="20.0" />
                                  </HBox.margin>
                               </TextField>
-                              <TextField fx:id="timeTextField" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="70.0" prefWidth="142.0" promptText="hh:mm">
+                              <TextField fx:id="timeTextField" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefHeight="70.0" prefWidth="130.0" promptText="hh:mm">
                                  <HBox.margin>
-                                    <Insets />
+                                    <Insets right="20.0" />
                                  </HBox.margin>
                               </TextField>
                               <ToggleButton fx:id="amToggle" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" mnemonicParsing="false" prefHeight="70.0" prefWidth="80.0" text="am" textFill="WHITE">
                                  <font>
                                     <Font size="26.0" />
                                  </font>
+                                 <HBox.margin>
+                                    <Insets right="10.0" />
+                                 </HBox.margin>
                               </ToggleButton>
                               <ToggleButton fx:id="pmToggle" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" mnemonicParsing="false" prefHeight="70.0" prefWidth="80.0" text="pm" textFill="WHITE">
                                  <font>
@@ -79,14 +104,32 @@
                                  </font>
                               </ToggleButton>
                            </children>
+                           <VBox.margin>
+                              <Insets bottom="30.0" />
+                           </VBox.margin>
                         </HBox>
-                        <ComboBox fx:id="repeatBox" prefHeight="70.0" prefWidth="601.0" promptText="Select Frequency" />
+                        <ComboBox fx:id="repeatBox" prefHeight="70.0" prefWidth="601.0" promptText="Select Frequency">
+                           <VBox.margin>
+                              <Insets bottom="30.0" />
+                           </VBox.margin>
+                        </ComboBox>
                         <HBox prefHeight="70.0" prefWidth="555.0">
                            <children>
-                              <ToggleButton id="priorityToggle" fx:id="lowToggle" mnemonicParsing="false" prefHeight="70.0" prefWidth="200.0" text="!" />
-                              <ToggleButton id="priorityToggle" fx:id="medToggle" mnemonicParsing="false" prefHeight="70.0" prefWidth="200.0" text="!!" />
+                              <ToggleButton id="priorityToggle" fx:id="lowToggle" mnemonicParsing="false" prefHeight="70.0" prefWidth="200.0" text="!">
+                                 <HBox.margin>
+                                    <Insets right="20.0" />
+                                 </HBox.margin>
+                              </ToggleButton>
+                              <ToggleButton id="priorityToggle" fx:id="medToggle" mnemonicParsing="false" prefHeight="70.0" prefWidth="200.0" text="!!">
+                                 <HBox.margin>
+                                    <Insets right="20.0" />
+                                 </HBox.margin>
+                              </ToggleButton>
                               <ToggleButton id="priorityToggle" fx:id="highToggle" mnemonicParsing="false" prefHeight="70.0" prefWidth="200.0" text="!!" textFill="WHITE" />
                            </children>
+                           <VBox.margin>
+                              <Insets bottom="30.0" />
+                           </VBox.margin>
                         </HBox>
                      </children>
                   </VBox>
@@ -95,7 +138,7 @@
             <Button id="addTaskButton" fx:id="addTaskButton" mnemonicParsing="false" prefHeight="110.0" prefWidth="709.0" text="Add Task  +" textFill="WHITE" />
          </children>
       </VBox>
-      <Button id="closeButton" fx:id="closeButton" layoutX="741.0" layoutY="14.0" mnemonicParsing="false" text="X" textFill="#77b3d4">
+      <Button id="closeButton" fx:id="closeButton" layoutX="742.0" layoutY="29.0" mnemonicParsing="false" text="X" textFill="#77b3d4">
          <font>
             <Font size="14.0" />
          </font>
