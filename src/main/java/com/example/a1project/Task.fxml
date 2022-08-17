@@ -68,12 +68,12 @@
                                     <Insets />
                                  </HBox.margin>
                               </TextField>
-                              <ToggleButton fx:id="amToggle" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" mnemonicParsing="false" prefHeight="70.0" prefWidth="80.0" text="am">
+                              <ToggleButton fx:id="amToggle" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" mnemonicParsing="false" prefHeight="70.0" prefWidth="80.0" text="am" textFill="WHITE">
                                  <font>
                                     <Font size="26.0" />
                                  </font>
                               </ToggleButton>
-                              <ToggleButton fx:id="pmToggle" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" mnemonicParsing="false" prefHeight="70.0" prefWidth="80.0" text="pm">
+                              <ToggleButton fx:id="pmToggle" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" mnemonicParsing="false" prefHeight="70.0" prefWidth="80.0" text="pm" textFill="WHITE">
                                  <font>
                                     <Font size="26.0" />
                                  </font>
@@ -81,21 +81,21 @@
                            </children>
                         </HBox>
                         <ComboBox fx:id="repeatBox" prefHeight="70.0" prefWidth="601.0" promptText="Select Frequency" />
-                        <HBox prefHeight="55.0" prefWidth="200.0">
+                        <HBox prefHeight="70.0" prefWidth="555.0">
                            <children>
-                              <ToggleButton fx:id="lowToggle" minHeight="-Infinity" mnemonicParsing="false" prefHeight="70.0" prefWidth="200.0" text="!" />
-                              <ToggleButton fx:id="medToggle" mnemonicParsing="false" prefHeight="70.0" prefWidth="200.0" text="!!" />
-                              <ToggleButton fx:id="highToggle" mnemonicParsing="false" prefHeight="70.0" prefWidth="200.0" text="!!" />
+                              <ToggleButton id="priorityToggle" fx:id="lowToggle" mnemonicParsing="false" prefHeight="70.0" prefWidth="200.0" text="!" />
+                              <ToggleButton id="priorityToggle" fx:id="medToggle" mnemonicParsing="false" prefHeight="70.0" prefWidth="200.0" text="!!" />
+                              <ToggleButton id="priorityToggle" fx:id="highToggle" mnemonicParsing="false" prefHeight="70.0" prefWidth="200.0" text="!!" textFill="WHITE" />
                            </children>
                         </HBox>
                      </children>
                   </VBox>
                </children>
             </HBox>
-            <Button fx:id="addTaskButton" mnemonicParsing="false" prefHeight="110.0" prefWidth="709.0" text="Add Task       +" />
+            <Button id="addTaskButton" fx:id="addTaskButton" mnemonicParsing="false" prefHeight="110.0" prefWidth="709.0" text="Add Task  +" textFill="WHITE" />
          </children>
       </VBox>
-      <Button fx:id="closeButton" layoutX="753.0" layoutY="29.0" mnemonicParsing="false" text="X">
+      <Button id="closeButton" fx:id="closeButton" layoutX="741.0" layoutY="14.0" mnemonicParsing="false" text="X" textFill="#77b3d4">
          <font>
             <Font size="14.0" />
          </font>

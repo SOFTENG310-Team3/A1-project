@@ -18,8 +18,8 @@ public class Main extends Application {
     	Parent root = FXMLLoader.load(getClass().getResource("Task.fxml"));
     	Scene scene = new Scene(root);
     	
-    	//String css = this.getClass().getResource("ToDo.css").toExternalForm();
-    	//scene.getStylesheets().add(css);
+    	String css = this.getClass().getResource("Task.css").toExternalForm();
+    	scene.getStylesheets().add(css);
     	
     	stage.setTitle("My To Do's");
     	//stage.setWidth(1200);

@@ -1,0 +1,64 @@
+.root {
+	-fx-background-color: #ffffff;
+}
+
+#addTaskButton { 
+	-fx-background-color: #77B3D4;
+	-fx-background-radius: 20;
+	-fx-font-family: "Avenir Next";
+	-fx-font-size: 48;
+	-fx-font-weight: bold; 
+}
+
+#addTaskButton:hover { 
+	-fx-background-color: #a8daf5;
+}
+
+.label {
+	-fx-font-family: "Avenir Next";
+ 	
+}
+
+.toggle-button {
+	-fx-background-color: #ffffff;
+	-fx-background-radius: 20;
+	-fx-border-color: #77B3D4;
+	-fx-border-width: 3 3 3 3;
+	-fx-border-radius: 20;
+	-fx-font-family: "Avenir Next";
+	-fx-font-size: 24;
+	-fx-font-weight: bold; 
+	-fx-text-fill: #77B3D4;
+}
+
+.toggle-button:selected {
+	-fx-background-color: #77B3D4;
+	-fx-background-radius: 20;
+	-fx-text-fill: #ffffff;
+}
+
+.text-field {
+	-fx-background-color: #ffffff;
+	-fx-background-radius: 20;
+	-fx-border-color: #77B3D4;
+	-fx-border-width: 3 3 3 3;
+	-fx-border-radius: 20;
+	-fx-font-family: "Avenir Next";
+	-fx-font-size: 24;
+}
+
+.combo-box {
+	-fx-background-color: #ffffff;
+	-fx-background-radius: 20;
+	-fx-border-color: #77B3D4;
+	-fx-border-width: 3 3 3 3;
+	-fx-border-radius: 20;
+	-fx-font-family: "Avenir Next";
+	-fx-font-size: 24;
+}
+#closeButton {
+	-fx-background-color: #ffffff;
+	-fx-font-family: "Avenir Next";
+	-fx-font-size: 24;
+	-fx-font-weight: bold; 
+}
