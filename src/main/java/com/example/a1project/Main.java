@@ -2,7 +2,6 @@ package com.example.a1project;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -24,7 +23,9 @@ public class Main extends Application {
     	stage.setWidth(1200);
     	stage.setHeight(800);
     	stage.setResizable(false);
+  
         stage.setScene(scene);
+        
         stage.show();
     }
 
