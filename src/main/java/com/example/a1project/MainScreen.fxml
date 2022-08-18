@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="800.0" maxWidth="1200.0" minHeight="800.0" minWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.a1project.controllers.HomeController" stylesheets="@MainScreen.css">
+<AnchorPane maxHeight="800.0" maxWidth="1200.0" minHeight="800.0" minWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" stylesheets="@MainScreen.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.a1project.controllers.MainScreenController">
    <children>
       <SplitPane dividerPositions="0.3" minHeight="800.0" minWidth="1200.0" prefHeight="800.0" prefWidth="1200.0">
         <items>
@@ -25,7 +25,7 @@
                   <Rectangle fill="#77b3d4" height="800.0" width="1200.0" />
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Button fx:id="addTaskButton" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToDashboard" prefHeight="100.0" text="+" textFill="WHITE">
+                        <Button fx:id="addTaskButton" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addTask" prefHeight="100.0" text="+" textFill="WHITE">
                            <font>
                               <Font name="Avenir Next Bold" size="49.0" />
                            </font>
@@ -35,7 +35,7 @@
                         </Button>
                         <VBox>
                            <children>
-                              <Button alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToDashboard" prefHeight="60.0" text="Show All Tasks" textFill="WHITE">
+                              <Button fx:id="showAllTasksButton" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showAllTasks" prefHeight="60.0" text="Show All Tasks" textFill="WHITE">
                                  <font>
                                     <Font name="Avenir Next Bold" size="24.0" />
                                  </font>
@@ -64,7 +64,7 @@
                               </Accordion>
                            </children>
                         </VBox>
-                        <Button alignment="CENTER" contentDisplay="BOTTOM" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToDashboard" prefHeight="70.0" text="Rewards" textFill="WHITE">
+                        <Button fx:id="rewardsButton" alignment="CENTER" contentDisplay="BOTTOM" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToRewards" prefHeight="70.0" text="Rewards" textFill="WHITE">
                            <font>
                               <Font name="Avenir Next Bold" size="36.0" />
                            </font>
@@ -126,7 +126,7 @@
                                                       <Font name="Avenir Next Bold" size="24.0" />
                                                    </font>
                                                 </Text>
-                                                <ListView>
+                                                <ListView fx:id="currentTasksListView">
                                                    <padding>
                                                       <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
                                                    </padding>
@@ -139,7 +139,7 @@
                                                       <Insets top="30.0" />
                                                    </VBox.margin>
                                                 </Text>
-                                                <ListView>
+                                                <ListView fx:id="completedTasksListView">
                                                    <padding>
                                                       <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
                                                    </padding>
