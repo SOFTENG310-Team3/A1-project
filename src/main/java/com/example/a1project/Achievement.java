@@ -4,12 +4,12 @@ public class Achievement {
 	
 	private final String description;
 	private boolean isUnlocked;
-	private final String metric; 
+	private final AchievementMetric metric; 
 	private final int requiredMetricVal; 
 	private int currentMetricVal; 
 	
 
-	public Achievement(String description, boolean isUnlocked, String metric, int requiredMetricVal, int currentMetricVal) {
+	public Achievement(String description, boolean isUnlocked, AchievementMetric metric, int requiredMetricVal, int currentMetricVal) {
 		this.description = description;
 		this.isUnlocked = isUnlocked;
 		this.metric = metric;
@@ -25,7 +25,7 @@ public class Achievement {
 		return this.isUnlocked;
 	}
 	
-	public String getMetric() {
+	public AchievementMetric getMetric() {
 		return this.metric;
 	}
 	
