@@ -68,12 +68,13 @@
                   </VBox>
                   <VBox alignment="TOP_RIGHT" prefHeight="528.0" prefWidth="555.0">
                      <children>
-                        <TextField fx:id="locationTexField" prefHeight="70.0" prefWidth="626.0" promptText="Enter Location">
+                        <TextField fx:id="locationTextField" prefHeight="70.0" prefWidth="626.0" promptText="Enter Location">
                            <VBox.margin>
                               <Insets bottom="30.0" />
                            </VBox.margin>
                         </TextField>
-                        <ComboBox fx:id="categoryBox" prefHeight="70.0" prefWidth="629.0" promptText="Select Category">
+                        <ComboBox fx:id="categoryComboBox" prefHeight="70.0" prefWidth="629.0" promptText="Select Category">
+                        	
                            <VBox.margin>
                               <Insets bottom="30.0" />
                            </VBox.margin>
@@ -108,7 +109,7 @@
                               <Insets bottom="30.0" />
                            </VBox.margin>
                         </HBox>
-                        <ComboBox fx:id="repeatBox" prefHeight="70.0" prefWidth="601.0" promptText="Select Frequency">
+                        <ComboBox fx:id="repeatComboBox" prefHeight="70.0" prefWidth="601.0" promptText="Select Frequency">
                            <VBox.margin>
                               <Insets bottom="30.0" />
                            </VBox.margin>

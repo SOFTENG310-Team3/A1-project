@@ -13,10 +13,10 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         
-    	Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
+    	Parent root = FXMLLoader.load(getClass().getResource("Task.fxml"));
     	Scene scene = new Scene(root);
     	
-    	String css = this.getClass().getResource("ToDo.css").toExternalForm();
+    	String css = this.getClass().getResource("Task.css").toExternalForm();
     	scene.getStylesheets().add(css);
     	
     	stage.setTitle("My To Do's");
