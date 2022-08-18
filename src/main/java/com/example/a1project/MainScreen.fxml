@@ -23,71 +23,60 @@
           <AnchorPane minHeight="0.0" minWidth="0.0">
                <children>
                   <Rectangle fill="#77b3d4" height="800.0" width="1200.0" />
-                  <SplitPane dividerPositions="0.5, 0.5" minHeight="0.0" minWidth="0.0" orientation="VERTICAL" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <items>
-                        <AnchorPane>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Button alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToDashboard" prefHeight="100.0" text="+" textFill="WHITE">
+                           <font>
+                              <Font name="Avenir Next Bold" size="48.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="40.0" />
+                           </VBox.margin>
+                        </Button>
+                        <VBox>
                            <children>
-                              <Button alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToDashboard" prefHeight="100.0" text="+" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <Button alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToDashboard" prefHeight="60.0" text="Show All Tasks" textFill="WHITE">
                                  <font>
-                                    <Font name="Avenir Next Bold" size="48.0" />
+                                    <Font name="Avenir Next Bold" size="24.0" />
                                  </font>
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" />
+                                 </VBox.margin>
                               </Button>
+                              <Accordion prefHeight="408.0" prefWidth="296.0">
+                                 <panes>
+                                    <TitledPane animated="false" text="Categories">
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                       </content>
+                                    </TitledPane>
+                                    <TitledPane animated="false" text="Priority">
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                       </content>
+                                    </TitledPane>
+                                    <TitledPane animated="false" text="Due Date">
+                                       <content>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                       </content>
+                                    </TitledPane>
+                                 </panes>
+                              </Accordion>
                            </children>
-                        </AnchorPane>
-                        <AnchorPane>
-                           <children>
-                              <SplitPane dividerPositions="0.15" orientation="VERTICAL" prefHeight="450.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                <items>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                                       <children>
-                                          <Button alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToDashboard" prefHeight="100.0" text="Show All Tasks" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                             <font>
-                                                <Font name="Avenir Next Bold" size="24.0" />
-                                             </font>
-                                          </Button>
-                                       </children>
-                                    </AnchorPane>
-                                    <Accordion prefHeight="435.0" prefWidth="356.0">
-                                       <panes>
-                                          <TitledPane animated="false" text="Categories">
-                                             <content>
-                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                             </content>
-                                          </TitledPane>
-                                          <TitledPane animated="false" text="Priority">
-                                             <content>
-                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                             </content>
-                                          </TitledPane>
-                                          <TitledPane animated="false" text="Due Date">
-                                             <content>
-                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                                             </content>
-                                          </TitledPane>
-                                       </panes>
-                                    </Accordion>
-                                </items>
-                              </SplitPane>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane>
-                           <children>
-                              <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-                                 <children>
-                                    <Button alignment="CENTER" contentDisplay="BOTTOM" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToDashboard" prefHeight="100.0" text="Rewards" textFill="WHITE" StackPane.alignment="BOTTOM_CENTER">
-                                       <font>
-                                          <Font name="Avenir Next Bold" size="36.0" />
-                                       </font>
-                                    </Button>
-                                 </children>
-                              </StackPane>
-                           </children>
-                        </AnchorPane>
-                     </items>
+                        </VBox>
+                        <Button alignment="CENTER" contentDisplay="BOTTOM" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#switchToDashboard" prefHeight="70.0" text="Rewards" textFill="WHITE">
+                           <font>
+                              <Font name="Avenir Next Bold" size="36.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="40.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
                      <padding>
                         <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
                      </padding>
-                  </SplitPane>
+                  </VBox>
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0">
