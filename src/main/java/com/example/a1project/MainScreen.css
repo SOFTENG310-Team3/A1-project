@@ -1,0 +1,67 @@
+* {
+ 	-main-color: #77B3D4;
+ 	-highlight-colour: #a8daf5;
+ 	}
+
+
+ .root {
+ 	-fx-background-color: white;
+ 	-fx-font-family: "Avenir Next";
+ }
+
+.button { 
+	-fx-background-color: white;
+	-fx-background-radius: 10;
+	-fx-text-fill: -main-color;
+	-fx-font-size: 24;
+	-fx-font-weight: bold;
+}
+
+.button:hover { 
+	-fx-background-color: -highlight-colour;
+}
+
+
+
+.titled-pane > .title {
+	-fx-font-size: 26px;
+	-fx-background-color: transparent;
+}
+
+.titled-pane > .title > .text {
+	-fx-fill: white;
+}
+
+.titled-pane > .title > .arrow-button .arrow {
+	-fx-background-color: white;
+}
+
+.titled-pane > *.content {
+  -fx-background-color: transparent;
+  -fx-border-color: transparent;
+}
+
+.split-pane {
+	-fx-background-color: transparent;
+}
+.split-pane-divider {
+    -fx-padding: 0;
+}
+
+.scroll-pane {
+	-fx-background-color: transparent;
+}
+.scroll-pane > .viewport {
+	-fx-background-color: transparent;
+}
+
+
+
+
+
+
+
+#addTaskButton {
+	-fx-padding: 0;
+	-fx-font-size: 50px;
+}
