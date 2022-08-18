@@ -38,9 +38,27 @@
       <Rectangle arcHeight="30.0" arcWidth="20.0" fill="#77b3d4" height="70.0" layoutX="560.0" layoutY="155.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="632.0" />
       <Text fill="WHITE" layoutX="705.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Achievments">
          <font>
-            <Font name="Avenir Next Bold" size="48.0" />
+            <Font size="42.0" />
          </font>
       </Text>
       <Rectangle arcHeight="30.0" arcWidth="20.0" fill="#77b3d4" height="634.0" layoutX="24.0" layoutY="155.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="446.0" />
+      <Text fill="WHITE" layoutX="80.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Achievements completed">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Rectangle arcHeight="30.0" arcWidth="20.0" fill="WHITE" height="117.0" layoutX="96.0" layoutY="225.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="302.0" />
+      <Rectangle arcHeight="30.0" arcWidth="20.0" fill="WHITE" height="117.0" layoutX="96.0" layoutY="425.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="302.0" />
+      <Rectangle arcHeight="30.0" arcWidth="20.0" fill="WHITE" height="117.0" layoutX="96.0" layoutY="633.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="302.0" />
+      <Text fill="WHITE" layoutX="84.0" layoutY="388.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Streak" textAlignment="CENTER" wrappingWidth="326.8583984375">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="84.0" layoutY="592.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Points Balance" textAlignment="CENTER" wrappingWidth="326.8583984375">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
