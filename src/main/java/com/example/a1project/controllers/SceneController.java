@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class SceneController {
@@ -39,4 +40,14 @@ public class SceneController {
 		stage.show();
 	}
 	
+	public void showNewTaskPopup(ActionEvent event) throws IOException {
+		root = FXMLLoader.load(getClass().getResource("../Task.fxml"));
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		Stage popup = new Stage();
+		popup.initModality(Modality.APPLICATION_MODAL);
+		popup.initOwner(stage);
+		scene = new Scene(root);
+		popup.setScene(scene);
+		popup.show();
+	}
 }
