@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class SceneController {
 	
@@ -46,6 +47,7 @@ public class SceneController {
 		Stage popup = new Stage();
 		popup.initModality(Modality.APPLICATION_MODAL);
 		popup.initOwner(stage);
+		popup.initStyle(StageStyle.UNDECORATED);
 		scene = new Scene(root);
 		popup.setScene(scene);
 		popup.show();
