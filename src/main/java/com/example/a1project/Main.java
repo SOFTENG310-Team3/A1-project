@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -13,10 +14,10 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         
-    	Parent root = FXMLLoader.load(getClass().getResource("Task.fxml"));
+    	Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
     	Scene scene = new Scene(root);
     	
-    	String css = this.getClass().getResource("Task.css").toExternalForm();
+    	String css = this.getClass().getResource("ToDo.css").toExternalForm();
     	scene.getStylesheets().add(css);
     	
     	stage.setTitle("My To Do's");
@@ -25,7 +26,6 @@ public class Main extends Application {
     	stage.setResizable(false);
   
         stage.setScene(scene);
-        
         stage.show();
     }
 

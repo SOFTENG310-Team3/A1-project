@@ -28,7 +28,16 @@ public class TaskController extends SceneController implements Initializable {
 	}
 	
 	public void toggleTimeButton(ActionEvent event) {
-   // TODO document why this method is empty
- }
+		// TODO
+	}
+	
+	public void togglePriorityButtons(ActionEvent event) {
+		// TODO
+	}
+	
+	public void addTask(ActionEvent event) {
+		// TODO
+	}
+	
 	
 }
