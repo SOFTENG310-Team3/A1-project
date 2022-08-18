@@ -20,8 +20,6 @@ public class Main extends Application {
     	scene.getStylesheets().add(css);
     	
     	stage.setTitle("My To Do's");
-    	stage.setWidth(1200);
-    	stage.setHeight(800);
     	stage.setResizable(false);
   
         stage.setScene(scene);

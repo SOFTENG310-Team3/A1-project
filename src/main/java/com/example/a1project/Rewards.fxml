@@ -35,5 +35,12 @@
             </StackPane>
          </graphic>
       </Button>
+      <Rectangle arcHeight="30.0" arcWidth="20.0" fill="#77b3d4" height="70.0" layoutX="560.0" layoutY="155.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="632.0" />
+      <Text fill="WHITE" layoutX="705.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Achievments">
+         <font>
+            <Font name="Avenir Next Bold" size="48.0" />
+         </font>
+      </Text>
+      <Rectangle arcHeight="30.0" arcWidth="20.0" fill="#77b3d4" height="634.0" layoutX="24.0" layoutY="155.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="446.0" />
    </children>
 </AnchorPane>
