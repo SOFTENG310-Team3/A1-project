@@ -5,9 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-
-import java.io.IOException;
 
 public class Main extends Application {
 	
@@ -19,6 +16,8 @@ public class Main extends Application {
     	
     	String css = this.getClass().getResource("ToDo.css").toExternalForm();
     	scene.getStylesheets().add(css);
+    	
+    	Utility.loadAchievements();
     	
     	stage.setTitle("My To Do's");
     	stage.setResizable(false);
