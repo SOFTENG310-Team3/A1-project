@@ -68,12 +68,13 @@
                   </VBox>
                   <VBox alignment="TOP_RIGHT" prefHeight="528.0" prefWidth="555.0">
                      <children>
-                        <TextField fx:id="locationTexField" prefHeight="70.0" prefWidth="626.0" promptText="Enter Location">
+                        <TextField fx:id="locationTextField" prefHeight="70.0" prefWidth="626.0" promptText="Enter Location">
                            <VBox.margin>
                               <Insets bottom="30.0" />
                            </VBox.margin>
                         </TextField>
-                        <ComboBox fx:id="categoryBox" prefHeight="70.0" prefWidth="629.0" promptText="Select Category">
+                        <ComboBox fx:id="categoryComboBox" prefHeight="70.0" prefWidth="629.0" promptText="Select Category">
+                        	
                            <VBox.margin>
                               <Insets bottom="30.0" />
                            </VBox.margin>
@@ -90,7 +91,7 @@
                                     <Insets right="20.0" />
                                  </HBox.margin>
                               </TextField>
-                              <ToggleButton fx:id="amToggle" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" mnemonicParsing="false" prefHeight="70.0" prefWidth="80.0" text="am" textFill="WHITE">
+                              <ToggleButton fx:id="amToggle" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" mnemonicParsing="false" onAction="#toggleTimeButton" prefHeight="70.0" prefWidth="80.0" text="am" textFill="WHITE">
                                  <font>
                                     <Font size="26.0" />
                                  </font>
@@ -98,7 +99,7 @@
                                     <Insets right="10.0" />
                                  </HBox.margin>
                               </ToggleButton>
-                              <ToggleButton fx:id="pmToggle" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" mnemonicParsing="false" prefHeight="70.0" prefWidth="80.0" text="pm" textFill="WHITE">
+                              <ToggleButton fx:id="pmToggle" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="-Infinity" mnemonicParsing="false" onAction="#toggleTimeButton" prefHeight="70.0" prefWidth="80.0" text="pm" textFill="WHITE">
                                  <font>
                                     <Font size="26.0" />
                                  </font>
@@ -108,24 +109,24 @@
                               <Insets bottom="30.0" />
                            </VBox.margin>
                         </HBox>
-                        <ComboBox fx:id="repeatBox" prefHeight="70.0" prefWidth="601.0" promptText="Select Frequency">
+                        <ComboBox fx:id="repeatComboBox" prefHeight="70.0" prefWidth="601.0" promptText="Select Frequency">
                            <VBox.margin>
                               <Insets bottom="30.0" />
                            </VBox.margin>
                         </ComboBox>
                         <HBox prefHeight="70.0" prefWidth="555.0">
                            <children>
-                              <ToggleButton id="priorityToggle" fx:id="lowToggle" mnemonicParsing="false" prefHeight="70.0" prefWidth="200.0" text="!">
+                              <ToggleButton id="priorityToggle" fx:id="lowToggle" mnemonicParsing="false" onAction="#togglePriorityButtons" prefHeight="70.0" prefWidth="200.0" text="!">
                                  <HBox.margin>
                                     <Insets right="20.0" />
                                  </HBox.margin>
                               </ToggleButton>
-                              <ToggleButton id="priorityToggle" fx:id="medToggle" mnemonicParsing="false" prefHeight="70.0" prefWidth="200.0" text="!!">
+                              <ToggleButton id="priorityToggle" fx:id="medToggle" mnemonicParsing="false" onAction="#togglePriorityButtons" prefHeight="70.0" prefWidth="200.0" text="!!">
                                  <HBox.margin>
                                     <Insets right="20.0" />
                                  </HBox.margin>
                               </ToggleButton>
-                              <ToggleButton id="priorityToggle" fx:id="highToggle" mnemonicParsing="false" prefHeight="70.0" prefWidth="200.0" text="!!" textFill="WHITE" />
+                              <ToggleButton id="priorityToggle" fx:id="highToggle" mnemonicParsing="false" onAction="#togglePriorityButtons" prefHeight="70.0" prefWidth="200.0" text="!!" textFill="WHITE" />
                            </children>
                            <VBox.margin>
                               <Insets bottom="30.0" />
@@ -135,7 +136,7 @@
                   </VBox>
                </children>
             </HBox>
-            <Button id="addTaskButton" fx:id="addTaskButton" mnemonicParsing="false" prefHeight="110.0" prefWidth="709.0" text="Add Task  +" textFill="WHITE" />
+            <Button id="addTaskButton" fx:id="addTaskButton" mnemonicParsing="false" onAction="#addTask" prefHeight="110.0" prefWidth="709.0" text="Add Task  +" textFill="WHITE" />
          </children>
       </VBox>
       <Button id="closeButton" fx:id="closeButton" layoutX="742.0" layoutY="29.0" mnemonicParsing="false" text="X" textFill="#77b3d4">
