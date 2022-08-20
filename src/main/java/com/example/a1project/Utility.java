@@ -5,6 +5,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+
+
 public class Utility {
 	
 	private Utility() {
@@ -28,10 +30,7 @@ public class Utility {
 				
 				achievementArray.add(new Achievement(description, isUnlocked, metric,required, current));
 			}
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-		}	
+		} 
 	}
 	
 	public static AchievementMetric findMetric(String line) {
