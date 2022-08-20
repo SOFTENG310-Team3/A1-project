@@ -139,7 +139,7 @@
             <Button id="addTaskButton" fx:id="addTaskButton" mnemonicParsing="false" onAction="#addTask" prefHeight="110.0" prefWidth="709.0" text="Add Task  +" textFill="WHITE" />
          </children>
       </VBox>
-      <Button id="closeButton" fx:id="closeButton" layoutX="742.0" layoutY="29.0" mnemonicParsing="false" text="X" textFill="#77b3d4">
+      <Button id="closeButton" fx:id="closeButton" layoutX="742.0" layoutY="29.0" mnemonicParsing="false" onAction="#closeTaskPopup" text="X" textFill="#77b3d4">
          <font>
             <Font size="14.0" />
          </font>
