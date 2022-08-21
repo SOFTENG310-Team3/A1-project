@@ -10,7 +10,9 @@ public class Task {
 	private String dueTime;
 	
 	private int priority;
-
+	
+	private boolean isCompleted;
+	
 	/**
 	 * @param description
 	 * @param location
@@ -128,6 +130,20 @@ public class Task {
 	 */
 	public void setPriority(int priority) {
 		this.priority = priority;
+	}
+
+	/**
+	 * @return the isCompleted
+	 */
+	public boolean isCompleted() {
+		return isCompleted;
+	}
+
+	/**
+	 * completes the task
+	 */
+	public void completeTask() {
+		this.isCompleted = true;
 	}
 	
 }
