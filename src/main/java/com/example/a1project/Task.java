@@ -12,6 +12,27 @@ public class Task {
 	private int priority;
 
 	/**
+	 * @param description
+	 * @param location
+	 * @param category
+	 * @param frequency
+	 * @param dueDate
+	 * @param dueTime
+	 * @param priority
+	 */
+	public Task(String description, String location, String category, String frequency, String dueDate, String dueTime,
+			int priority) {
+		super();
+		this.description = description;
+		this.location = location;
+		this.category = category;
+		this.frequency = frequency;
+		this.dueDate = dueDate;
+		this.dueTime = dueTime;
+		this.priority = priority;
+	}
+
+	/**
 	 * @return the description
 	 */
 	public String getDescription() {
