@@ -17,7 +17,7 @@ public class Utility {
 	
 	public static void loadAchievements() throws IOException {
 				
-		try (BufferedReader br = new BufferedReader(new FileReader("src/main/java/com/example/a1project/txtfiles/Achievements.txt"))){
+		try (BufferedReader br = new BufferedReader(new FileReader("txtfiles/Achievements.txt"))){
 			
 			String line;
 			while((line=br.readLine()) !=null) {
