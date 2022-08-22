@@ -27,6 +27,8 @@ public class TaskController extends SceneController implements Initializable {
 	public ToggleButton pmToggle, amToggle, lowToggle, medToggle, highToggle;
 	public ToggleGroup time, priority;
 	public TextField taskTextField, locationTextField,dayTextField,timeTextField;
+	
+	private MainScreenController mainScreen;
 
 
 
@@ -38,6 +40,10 @@ public class TaskController extends SceneController implements Initializable {
 		categoryComboBox.setItems(categoryList);
 		repeatComboBox.setItems(repeatList);
 
+	}
+	
+	public void setMainScreenController(MainScreenController mainScreen) {
+		this.mainScreen = mainScreen;
 	}
 
 
@@ -96,7 +102,7 @@ public class TaskController extends SceneController implements Initializable {
 		
 		if(pass) {
 			Task task = new Task(description, location, category, repeat, dueDate, dueTime, priorityNum);
-			//MainScreenController.addTask(task)
+			mainScreen.addTaskToList(task);
 		}
 		
 	}
@@ -140,7 +146,7 @@ public class TaskController extends SceneController implements Initializable {
 			stringBuilder.append(" pm");
 		}
 		
-		return stringBuilder.toString();;
+		return stringBuilder.toString();
 	}
 
 	public boolean dateIsValid(String dueDate ){
@@ -152,7 +158,8 @@ public class TaskController extends SceneController implements Initializable {
 			int month =Integer.parseInt(dayCheck[1]);
 			int day = Integer.parseInt(dayCheck[0]);
 
-			if ( month > 0 && month < 13 && day > 0 && day < 32 && year > 2021){
+			// Follows dd/mm/yy format
+			if ( month > 0 && month < 13 && day > 0 && day < 32 && year > 21){
 				return true;
 			}
 		}
