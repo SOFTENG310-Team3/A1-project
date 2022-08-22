@@ -19,9 +19,6 @@ public class SingleTaskDisplayController {
     private AnchorPane baseAnchorPane;
 
     @FXML
-    private HBox vBox;
-
-    @FXML
     private CheckBox taskCheckBox;
 
     @FXML
