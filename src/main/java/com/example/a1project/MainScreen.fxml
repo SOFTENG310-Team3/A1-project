@@ -25,7 +25,7 @@
                   <Rectangle fill="#77b3d4" height="800.0" width="1200.0" />
                   <VBox alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Button fx:id="addTaskButton" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addTask" prefHeight="100.0" text="+" textFill="WHITE">
+                        <Button fx:id="addTaskButton" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addNewTask" prefHeight="100.0" text="+" textFill="WHITE">
                            <font>
                               <Font name="Avenir Next Bold" size="49.0" />
                            </font>
