@@ -27,14 +27,28 @@ public class MainScreenController extends SceneController {
 		
 	}
 	
-	private AnchorPane setupTaskItem(Task task) throws IOException {
-		FXMLLoader fxmlloader = new FXMLLoader();
-		fxmlloader.setLocation(getClass().getResource("/com/example/a1project/SingleTaskDisplay.fxml"));
-		AnchorPane anchor = fxmlloader.load();
+	private void newCurrentTaskDisplay(Task task) {
 		
-		SingleTaskDisplayController taskDisplay = fxmlloader.getController();
-		taskDisplay.setData(task);
+		AnchorPane anchor = setupTaskItem(task);
 		
-		return anchor;
+		currentTaskGridPane.add(anchor, 1, currentTaskGridPane.getRowCount());
+	}
+	
+	private AnchorPane setupTaskItem(Task task){
+		try {
+			FXMLLoader fxmlloader = new FXMLLoader();
+			fxmlloader.setLocation(getClass().getResource("/com/example/a1project/SingleTaskDisplay.fxml"));
+			AnchorPane anchor;
+			
+			anchor = fxmlloader.load();
+			
+			SingleTaskDisplayController taskDisplay = fxmlloader.getController();
+			taskDisplay.setData(task);
+			
+			return anchor;
+		} catch (IOException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 }
