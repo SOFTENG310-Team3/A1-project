@@ -45,15 +45,8 @@ public class Utility {
 		return metric;
 	}
 	
-	public static String[] getAchievementsToList() {
-		
-		int size = achievementArray.size();
-		String[] achievements = new String[size];
-		for(int i=0; i<size; i++) {
-			achievements[i] = achievementArray.get(i).getDescription();
-		}
-		
-		return achievements;
+	public static ArrayList<Achievement> getAchievements() {
+		return achievementArray;
 	}
 	
 }
