@@ -1,34 +1,36 @@
 package com.example.a1project.controllers;
 
-import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import com.example.a1project.Achievement;
-import com.example.a1project.controllers.CardViewController;
 import com.example.a1project.Utility;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Font;
 
 public class RewardsController extends SceneController implements Initializable {
 
 	@FXML 
 	private GridPane gridPane;
+	@FXML 
+	private Label completedLabel;
 	
-	private ArrayList<Achievement> achievements;
 	int column=0;
 	int row=0;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
-		achievements = Utility.getAchievements();
+		List<Achievement> achievements = Utility.getAchievements();
+		setCount(achievements.size(), Utility.getDone());
 		try {
 			for(int i=0; i<achievements.size(); i++) {
 				
@@ -46,6 +48,11 @@ public class RewardsController extends SceneController implements Initializable 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void setCount(int size, int number) {
+		completedLabel.setText(number + "/" + size);
+		completedLabel.setFont(Font.font(48));
 	}
 	
 }

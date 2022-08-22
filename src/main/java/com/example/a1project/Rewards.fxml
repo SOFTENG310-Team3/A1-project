@@ -58,7 +58,10 @@
                   <StackPane prefHeight="124.0" prefWidth="480.0">
                      <children>
                         <Rectangle arcHeight="30.0" arcWidth="20.0" fill="WHITE" height="117.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="302.0" />
-                        <Label fx:id="completedLabel" text="Label" />
+                        <Label fx:id="completedLabel" text="Label" textFill="#77b3d4">
+                           <font>
+                              <Font size="48.0" />
+                           </font></Label>
                      </children>
                   </StackPane>
                   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Streak" textAlignment="CENTER" wrappingWidth="326.8583984375">
