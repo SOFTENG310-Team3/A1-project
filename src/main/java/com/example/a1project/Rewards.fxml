@@ -28,7 +28,7 @@
             <Image url="@images/medal.png" />
          </image>
       </ImageView>
-      <Button layoutX="41.0" layoutY="27.0" mnemonicParsing="false" onAction="#switchToDashboard" style="-fx-background-color: #77B3D4;">
+      <Button layoutX="41.0" layoutY="27.0" mnemonicParsing="false" onAction="#switchToMainScreen" style="-fx-background-color: #77B3D4;">
          <graphic>
             <StackPane prefHeight="49.0" prefWidth="46.0">
                <children>

@@ -23,7 +23,7 @@
             <Image url="@images/pencil.png" />
          </image>
       </ImageView>
-      <Button contentDisplay="RIGHT" layoutX="386.0" layoutY="572.0" mnemonicParsing="false" onAction="#switchToDashboard" prefHeight="124.0" prefWidth="431.0" text="Get Started" textFill="WHITE">
+      <Button contentDisplay="RIGHT" layoutX="386.0" layoutY="572.0" mnemonicParsing="false" onAction="#switchToMainScreen" prefHeight="124.0" prefWidth="431.0" text="Get Started" textFill="WHITE">
          <font>
             <Font name="Avenir Next Bold" size="48.0" />
          </font>
