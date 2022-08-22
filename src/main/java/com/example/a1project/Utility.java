@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 
 
@@ -14,6 +15,11 @@ public class Utility {
 	}
 	
 	private static ArrayList<Achievement> achievementArray = new ArrayList<>();
+	private static int number=0;
+	
+	public static int getDone() {
+		return number;
+	}
 	
 	public static void loadAchievements() throws IOException {
 				
@@ -24,6 +30,9 @@ public class Utility {
 				String[] variable = line.split(",");
 				String description = variable[0];
 				Boolean isUnlocked = Boolean.parseBoolean(variable[1]);
+				if (Boolean.TRUE.equals(isUnlocked)) {
+					number++;
+				}
 				AchievementMetric metric = findMetric(variable[2]);
 				int  required = Integer.parseInt(variable[3]);
 				int current = Integer.parseInt(variable[4]);
@@ -45,15 +54,8 @@ public class Utility {
 		return metric;
 	}
 	
-	public static String[] getAchievementsToList() {
-		
-		int size = achievementArray.size();
-		String[] achievements = new String[size];
-		for(int i=0; i<size; i++) {
-			achievements[i] = achievementArray.get(i).getDescription();
-		}
-		
-		return achievements;
+	public static List<Achievement> getAchievements() {
+		return achievementArray;
 	}
 	
 }
