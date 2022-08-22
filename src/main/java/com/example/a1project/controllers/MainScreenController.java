@@ -55,6 +55,14 @@ public class MainScreenController extends SceneController implements Initializab
 		completedTaskGridPane.add(anchor, 1, completedTaskGridPane.getRowCount());
 	}
 	
+	private void removeFromCurrentTask(Task task) {
+		int taskIndex = currentTasks.indexOf(task);
+		if (taskIndex == -1) {
+			return;
+		}
+		currentTaskGridPane.getChildren().remove(taskIndex);
+	}
+	
 	
 	
 	private AnchorPane setupTaskItem(Task task){
@@ -65,6 +73,7 @@ public class MainScreenController extends SceneController implements Initializab
 			
 			SingleTaskDisplayController taskDisplay = fxmlloader.getController();
 			taskDisplay.setData(task);
+			taskDisplay.setMainScreen(this);
 			
 			return anchor;
 		} catch (IOException e) {
@@ -77,7 +86,12 @@ public class MainScreenController extends SceneController implements Initializab
 	public void initialize(URL arg0, ResourceBundle arg1) {
 //		currentTasks.addListener(new ListChangeListener<Task>() {
 //		    @Override
-//		    public void onChanged(Change<? extends Task> changedItems) {
+//		    public void onChanged(Change<? extends Task> changedItem) {
+//		    	while (changedItem.next()) {
+//		    		if (changedItem.wasUpdated()) {
+//	                    
+//	                }
+//		    	}
 //		    	
 //		    	// TODO: update FXML (VBox or ListView) to new tasks
 //		    	// updateDisplayLists();
@@ -116,11 +130,16 @@ public class MainScreenController extends SceneController implements Initializab
 	}
 	
 	
+	/**
+	 * Complete task, remove from current tasks to completed tasks list
+	 * @param task Task that is completed
+	 */
 	public void completeTask(Task task) {
+		removeFromCurrentTask(task);
 		currentTasks.remove(task);
-		completedTasks.add(task);
 		
 		newCompletedTaskDisplay(task);
+		completedTasks.add(task);
 	}
 
 }

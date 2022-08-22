@@ -47,7 +47,13 @@ public class SingleTaskDisplayController {
     @FXML
     void taskCompleted(ActionEvent event) {
     	//TODO update list with completed task in the "completed" section
+    	if (!this.task.isCompleted()) {
+    		mainScreen.completeTask(this.task);
+    		this.task.completeTask();
+    	}
     }
+    
+    private MainScreenController mainScreen;
     
     public void setData(Task task) {
     	
@@ -63,6 +69,10 @@ public class SingleTaskDisplayController {
     	
     	String priority = String.valueOf(task.getPriority());
     	priorityLabel.setText(priority);
+    }
+    
+    public void setMainScreen(MainScreenController mainScreen) {
+    	this.mainScreen = mainScreen;
     }
 }
 
