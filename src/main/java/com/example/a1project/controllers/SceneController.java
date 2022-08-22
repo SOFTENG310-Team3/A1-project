@@ -44,4 +44,9 @@ public class SceneController {
 		popup.setScene(scene);
 		popup.show();
 	}
+	
+	public void closeTaskPopup(ActionEvent event) {
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		stage.close();
+	}
 }
