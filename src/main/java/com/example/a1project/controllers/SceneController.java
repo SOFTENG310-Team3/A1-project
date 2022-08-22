@@ -17,14 +17,6 @@ public class SceneController {
 	private Scene scene;
 	private Parent root;
 	
-	public void switchToDashboard(ActionEvent event) throws IOException {
-		root = FXMLLoader.load(getClass().getResource("../Dashboard.fxml"));
-		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
-	}
-	
 	public void switchToMainScreen(ActionEvent event) throws IOException {
 		root = FXMLLoader.load(getClass().getResource("../MainScreen.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
