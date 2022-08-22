@@ -139,10 +139,8 @@ public class TaskController extends SceneController implements Initializable {
 		} else if (selectedTime.equals(pmToggle)) {
 			stringBuilder.append(" pm");
 		}
-
-		String dueTime = stringBuilder.toString();
 		
-		return dueTime;
+		return stringBuilder.toString();;
 	}
 
 	public boolean dateIsValid(String dueDate ){
