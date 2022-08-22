@@ -3,6 +3,8 @@ package com.example.a1project.controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.example.a1project.Task;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -90,6 +92,33 @@ public class TaskController extends SceneController implements Initializable {
 		}
 		
 		
+		String dueTime = getTimeString();
+		
+		if(pass) {
+			Task task = new Task(description, location, category, repeat, dueDate, dueTime, priorityNum);
+			//MainScreenController.addTask(task)
+		}
+		
+	}
+
+	private void resetFailure() {
+		String base = "-fx-border-color: #77B3D4;";
+		repeatComboBox.setStyle(base);
+		categoryComboBox.setStyle(base);
+		taskTextField.setStyle(base);
+		locationTextField.setStyle(base);
+		lowToggle.setStyle(base);
+		medToggle.setStyle(base);
+		highToggle.setStyle(base);
+		dayTextField.setStyle(base);
+		timeTextField.setStyle(base);
+		pmToggle.setStyle(base);
+		amToggle.setStyle(base);
+	}
+
+	public String getTimeString() {
+		
+		String fail = "-fx-border-color:red;";
 		StringBuilder stringBuilder = new StringBuilder();
 		String dueHour = timeTextField.getText();
 		
@@ -113,28 +142,8 @@ public class TaskController extends SceneController implements Initializable {
 
 		String dueTime = stringBuilder.toString();
 		
-		if(pass) {
-			//Task(description, location, category, repeat, date, time, priority);
-		}
-		
-
+		return dueTime;
 	}
-
-	private void resetFailure() {
-		String base = "-fx-border-color: #77B3D4;";
-		repeatComboBox.setStyle(base);
-		categoryComboBox.setStyle(base);
-		taskTextField.setStyle(base);
-		locationTextField.setStyle(base);
-		lowToggle.setStyle(base);
-		medToggle.setStyle(base);
-		highToggle.setStyle(base);
-		dayTextField.setStyle(base);
-		timeTextField.setStyle(base);
-		pmToggle.setStyle(base);
-		amToggle.setStyle(base);
-	}
-
 
 	public boolean dateIsValid(String dueDate ){
 
