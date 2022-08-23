@@ -40,7 +40,7 @@ public class Task {
 	 * @return the name
 	 */
 	public String getName() {
-		return description;
+		return name;
 	}
 
 	/**
