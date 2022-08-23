@@ -26,7 +26,7 @@ public class TaskController extends SceneController implements Initializable {
 	@FXML
 	public ToggleButton pmToggle, amToggle, lowToggle, medToggle, highToggle;
 	public ToggleGroup time, priority;
-	public TextField taskTextField, locationTextField,dayTextField,timeTextField;
+	public TextField taskNameTextField, taskDescriptionTextField, locationTextField,dayTextField,timeTextField;
 	
 	private MainScreenController mainScreen;
 
@@ -67,10 +67,15 @@ public class TaskController extends SceneController implements Initializable {
 			pass = false;
 		}
 
+		String name = taskNameTextField.getText();
+		if (name.equals("")) {
+			taskNameTextField.setStyle(fail);
+			pass = false;
+		}
 		
-		String description = taskTextField.getText();
+		String description = taskDescriptionTextField.getText();
 		if (description.equals("")) {
-			taskTextField.setStyle(fail);
+			taskDescriptionTextField.setStyle(fail);
 			pass = false;
 		}
 
@@ -101,7 +106,7 @@ public class TaskController extends SceneController implements Initializable {
 		String dueTime = getTimeString();
 		
 		if(pass) {
-			Task task = new Task(description, location, category, repeat, dueDate, dueTime, priorityNum);
+			Task task = new Task(name, description, location, category, repeat, dueDate, dueTime, priorityNum);
 			mainScreen.addTaskToList(task);
 		}
 		
@@ -111,7 +116,8 @@ public class TaskController extends SceneController implements Initializable {
 		String base = "-fx-border-color: #77B3D4;";
 		repeatComboBox.setStyle(base);
 		categoryComboBox.setStyle(base);
-		taskTextField.setStyle(base);
+		taskNameTextField.setStyle(base);
+		taskDescriptionTextField.setStyle(base);
 		locationTextField.setStyle(base);
 		lowToggle.setStyle(base);
 		medToggle.setStyle(base);
