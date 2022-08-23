@@ -21,6 +21,8 @@ public class Main extends Application {
     	
     	stage.setTitle("My To Do's");
     	stage.setResizable(false);
+    	stage.setHeight(800);
+		stage.setWidth(1200);
   
         stage.setScene(scene);
         stage.show();

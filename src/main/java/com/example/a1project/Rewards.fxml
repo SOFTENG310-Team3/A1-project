@@ -42,31 +42,31 @@
             </StackPane>
          </graphic>
       </Button>
-      <Rectangle arcHeight="30.0" arcWidth="20.0" fill="#77b3d4" height="669.0" layoutX="29.0" layoutY="128.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="437.0" />
+      <Rectangle arcHeight="30.0" arcWidth="20.0" fill="#77b3d4" height="633.0" layoutX="43.0" layoutY="131.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="414.0" />
       <HBox layoutX="3.0" layoutY="112.0" prefHeight="686.0" prefWidth="1194.0">
          <children>
-            <VBox prefHeight="642.0" prefWidth="490.0">
+            <VBox prefHeight="719.0" prefWidth="490.0">
                <children>
                   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Achievements completed">
                      <font>
-                        <Font size="30.0" />
+                        <Font name="Avenir Next Bold" size="24.0" />
                      </font>
                      <VBox.margin>
-                        <Insets bottom="20.0" left="90.0" top="35.0" />
+                        <Insets bottom="20.0" left="90.0" top="40.0" />
                      </VBox.margin>
                   </Text>
                   <StackPane prefHeight="124.0" prefWidth="480.0">
                      <children>
-                        <Rectangle arcHeight="30.0" arcWidth="20.0" fill="WHITE" height="117.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="302.0" />
+                        <Rectangle arcHeight="30.0" arcWidth="20.0" fill="WHITE" height="117.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="293.0" />
                         <Label fx:id="completedLabel" text="Label" textFill="#77b3d4">
                            <font>
-                              <Font size="48.0" />
+                              <Font name="Avenir Next Bold" size="48.0" />
                            </font></Label>
                      </children>
                   </StackPane>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Streak" textAlignment="CENTER" wrappingWidth="326.8583984375">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Streak" textAlignment="CENTER" wrappingWidth="299.6064147949219">
                      <font>
-                        <Font size="30.0" />
+                        <Font name="Avenir Next Bold" size="24.0" />
                      </font>
                      <VBox.margin>
                         <Insets bottom="20.0" left="90.0" top="35.0" />
@@ -74,13 +74,16 @@
                   </Text>
                   <StackPane prefHeight="172.0" prefWidth="491.0">
                      <children>
-                        <Rectangle arcHeight="30.0" arcWidth="20.0" fill="WHITE" height="117.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="302.0" />
-                        <Label fx:id="streakLabel" text="Label" />
+                        <Rectangle arcHeight="30.0" arcWidth="20.0" fill="WHITE" height="117.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="286.0" />
+                        <Label fx:id="streakLabel" text="0 Tasks" textFill="#77b3d4">
+                           <font>
+                              <Font name="Avenir Next Bold" size="48.0" />
+                           </font></Label>
                      </children>
                   </StackPane>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Points Balance" textAlignment="CENTER" wrappingWidth="326.8583984375">
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Points Balance" textAlignment="CENTER" wrappingWidth="290.52239990234375">
                      <font>
-                        <Font size="30.0" />
+                        <Font name="Avenir Next Bold" size="24.0" />
                      </font>
                      <VBox.margin>
                         <Insets bottom="20.0" left="90.0" top="35.0" />
@@ -88,27 +91,35 @@
                   </Text>
                   <StackPane prefHeight="172.0" prefWidth="491.0">
                      <children>
-                        <Rectangle arcHeight="30.0" arcWidth="20.0" fill="WHITE" height="117.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="302.0" />
                         <Label fx:id="pointsLabel" text="Label" />
+                        <Rectangle arcHeight="30.0" arcWidth="20.0" fill="WHITE" height="115.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="276.0" />
+                        <Label fx:id="streakLabel1" text="Label" textFill="#77b3d4">
+                           <font>
+                              <Font name="Avenir Next Bold" size="48.0" />
+                           </font>
+                        </Label>
                      </children>
                   </StackPane>
                </children>
+               <HBox.margin>
+                  <Insets bottom="80.0" />
+               </HBox.margin>
             </VBox>
-            <VBox prefHeight="686.0" prefWidth="703.0">
+            <VBox prefHeight="666.0" prefWidth="670.0">
                <children>
-                  <StackPane prefHeight="91.0" prefWidth="703.0">
+                  <StackPane prefHeight="142.0" prefWidth="703.0">
                      <children>
-                        <Rectangle arcHeight="30.0" arcWidth="20.0" fill="#77b3d4" height="64.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="632.0" />
+                        <Rectangle arcHeight="30.0" arcWidth="20.0" fill="#77b3d4" height="103.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="600.0" />
                         <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Your Achievments">
                            <font>
-                              <Font size="42.0" />
+                              <Font name="Avenir Next Bold" size="28.0" />
                            </font>
                         </Text>
                      </children>
                   </StackPane>
-                  <HBox fx:id="hBox" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                  <HBox fx:id="hBox" prefHeight="544.0" prefWidth="665.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <ScrollPane fx:id="scrollPane" prefWidth="703.0">
+                        <ScrollPane fx:id="scrollPane" prefHeight="519.0" prefWidth="638.0">
                            <content>
                               <GridPane fx:id="gridPane" maxWidth="500.0">
                                 <columnConstraints>
@@ -116,6 +127,12 @@
                                 </columnConstraints>
                               </GridPane>
                            </content>
+                           <HBox.margin>
+                              <Insets bottom="60.0" left="40.0" right="40.0" top="10.0" />
+                           </HBox.margin>
+                           <padding>
+                              <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+                           </padding>
                         </ScrollPane>
                      </children>
                   </HBox>
