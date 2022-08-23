@@ -16,7 +16,7 @@
 	-fx-background-color: -main-color;
 	-fx-background-radius: 20;
 	-fx-font-family: "Avenir Next";
-	-fx-font-size: 48;
+	-fx-font-size: 28;
 	-fx-font-weight: bold; 
 }
 
@@ -91,7 +91,7 @@
 
 
 #closeButton {
-	-fx-background-color: white;
+	-fx-background-color: transparent;
 	-fx-font-family: "Avenir Next";
 	-fx-font-size: 24;
 	-fx-font-weight: bold; 
