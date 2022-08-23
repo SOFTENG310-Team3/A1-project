@@ -33,8 +33,14 @@ public class SceneController {
 		stage.show();
 	}
 	
-	public void showNewTaskPopup(ActionEvent event) throws IOException {
-		root = FXMLLoader.load(getClass().getResource("../Task.fxml"));
+	public TaskController showNewTaskPopup(ActionEvent event) throws IOException {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("/com/example/a1project/Task.fxml"));
+		
+		root = loader.load();
+		
+		TaskController taskController = loader.getController();
+		
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		Stage popup = new Stage();
 		popup.initModality(Modality.APPLICATION_MODAL);
@@ -43,6 +49,8 @@ public class SceneController {
 		scene = new Scene(root);
 		popup.setScene(scene);
 		popup.show();
+		
+		return taskController;
 	}
 	
 	public void closeTaskPopup(ActionEvent event) {
