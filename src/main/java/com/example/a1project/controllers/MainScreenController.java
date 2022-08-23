@@ -33,12 +33,60 @@ public class MainScreenController extends SceneController implements Initializab
     ObservableList<Task> currentTasks = FXCollections.observableArrayList();
 	ObservableList<Task> completedTasks = FXCollections.observableArrayList();
 	
-	public void showAllTasks() {
+	
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
 		
+		// Consider adding listeners to the ObservableLists here (e.g: onChanged) to react whenever changes are made
+		// Achieved by using:
+		
+		// currentTasks.addListener(new ListChangeListener<Task>() { }});
 	}
 	
-	private void newCurrentTaskDisplay(Task task) {
+	
+	/**
+	 * Called onClick by addTaskButton in FXML
+	 */
+	public void addNewTask(ActionEvent event) throws IOException {
+		TaskController taskController = showNewTaskPopup(event);
+		taskController.setMainScreenController(this);
+	}
+	
+	/**
+	 * Unimplemented. Called by showAllTasksButton in FXML
+	 */
+	public void showAllTasks() {
+		// TODO: remove sorting filters and show all tasks
+	}
+	
+	/**
+	 * Add created task to current tasks. Called from Task screen by TaskController
+	 * @param task Task to add
+	 */
+	public void addTaskToList(Task task) {
+		currentTasks.add(task);
+		newCurrentTaskDisplay(task);
+	}
+	
+	
+	/**
+	 * Complete task, remove from current tasks to completed tasks list
+	 * @param task Task that is completed
+	 */
+	public void completeTask(Task task) {
+		removeFromCurrentTask(task);
+		currentTasks.remove(task);
 		
+		newCompletedTaskDisplay(task);
+		completedTasks.add(task);
+	}
+	
+	
+	
+	
+	
+	
+	private void newCurrentTaskDisplay(Task task) {
 		AnchorPane anchor = setupTaskItem(task);
 		
 		currentTaskGridPane.add(anchor, 1, currentTaskGridPane.getRowCount());
@@ -76,66 +124,6 @@ public class MainScreenController extends SceneController implements Initializab
 			e.printStackTrace();
 			return null;
 		}
-	}
-
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-//		currentTasks.addListener(new ListChangeListener<Task>() {
-//		    @Override
-//		    public void onChanged(Change<? extends Task> changedItem) {
-//		    	while (changedItem.next()) {
-//		    		if (changedItem.wasUpdated()) {
-//	                    
-//	                }
-//		    	}
-//		    	
-//		    	// TODO: update FXML (VBox or ListView) to new tasks
-//		    	// updateDisplayLists();
-//		    	
-//		        // while (changedItems.next()) to access all items changed
-//		    }});
-//		
-//		completedTasks.addListener(new ListChangeListener<Task>() {
-//		    @Override
-//		    public void onChanged(Change<? extends Task> changedItems) {
-//		    	
-//		    	// TODO: update FXML (VBox or ListView) to new tasks
-//		    	// updateDisplayLists();
-//		    }});
-		
-	}
-	
-	
-	
-
-	/**
-	 * Called onClick by FXML addTaskButton
-	 */
-	public void addNewTask(ActionEvent event) throws IOException {
-		TaskController taskController = showNewTaskPopup(event);
-		taskController.setMainScreenController(this);
-	}
-	
-	/**
-	 * Add created task to current tasks. Called from Task screen by TaskController
-	 * @param task Task to add
-	 */
-	public void addTaskToList(Task task) {
-		currentTasks.add(task);
-		newCurrentTaskDisplay(task);
-	}
-	
-	
-	/**
-	 * Complete task, remove from current tasks to completed tasks list
-	 * @param task Task that is completed
-	 */
-	public void completeTask(Task task) {
-		removeFromCurrentTask(task);
-		currentTasks.remove(task);
-		
-		newCompletedTaskDisplay(task);
-		completedTasks.add(task);
 	}
 
 }
