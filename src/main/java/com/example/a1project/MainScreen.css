@@ -55,13 +55,15 @@
 	-fx-background-color: transparent;
 }
 
-
-
-
-
-
-
 #addTaskButton {
 	-fx-padding: 0;
 	-fx-font-size: 50px;
+}
+
+#currentTaskGridPane {
+	-fx-background-fill: white, white;
+}
+
+#completedTaskGridPane {
+	-fx-background-fill: white, white;
 }
