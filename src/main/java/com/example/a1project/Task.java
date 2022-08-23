@@ -2,6 +2,7 @@ package com.example.a1project;
 
 public class Task {
 
+	private String name;
 	private String description;
 	private String location;
 	private String category;
@@ -22,9 +23,10 @@ public class Task {
 	 * @param dueTime
 	 * @param priority
 	 */
-	public Task(String description, String location, String category, String frequency, String dueDate, String dueTime,
+	public Task(String name, String description, String location, String category, String frequency, String dueDate, String dueTime,
 			int priority) {
 		super();
+		this.name = name;
 		this.description = description;
 		this.location = location;
 		this.category = category;
@@ -32,6 +34,20 @@ public class Task {
 		this.dueDate = dueDate;
 		this.dueTime = dueTime;
 		this.priority = priority;
+	}
+	
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * @param name the name to set
+	 */
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	/**

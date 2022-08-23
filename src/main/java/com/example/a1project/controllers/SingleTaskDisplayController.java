@@ -59,7 +59,7 @@ public class SingleTaskDisplayController {
     	
     	this.task = task;
     	
-    	taskNameLabel.setText("TASK NAME"); //TODO Add task name in add task scene and task scene controller
+    	taskNameLabel.setText(task.getName()); //TODO Add task name in add task scene and task scene controller
     	
     	descriptionTooltip.setText(task.getDescription());
     	
