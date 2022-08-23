@@ -89,14 +89,16 @@ public class MainScreenController extends SceneController implements Initializab
 	private void newCurrentTaskDisplay(Task task) {
 		AnchorPane anchor = setupTaskItem(task);
 		
-		currentTaskGridPane.add(anchor, 1, currentTaskGridPane.getRowCount());
+		// Add to column 0 of GridPane
+		currentTaskGridPane.add(anchor, 0, currentTaskGridPane.getRowCount());
 	}
 	
 	private void newCompletedTaskDisplay(Task task) {
 		
 		AnchorPane anchor = setupTaskItem(task);
 		
-		completedTaskGridPane.add(anchor, 1, completedTaskGridPane.getRowCount());
+		// Add to column 0 of GridPane
+		completedTaskGridPane.add(anchor, 0, completedTaskGridPane.getRowCount());
 	}
 	
 	private void removeFromCurrentTask(Task task) {
