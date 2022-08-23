@@ -32,10 +32,6 @@ public class MainScreenController extends SceneController implements Initializab
     
     ObservableList<Task> currentTasks = FXCollections.observableArrayList();
 	ObservableList<Task> completedTasks = FXCollections.observableArrayList();
-    
-	public void addTask(ActionEvent event) throws IOException {
-		showNewTaskPopup(event);
-	}
 	
 	public void showAllTasks() {
 		
