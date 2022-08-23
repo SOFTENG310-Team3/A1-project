@@ -100,3 +100,41 @@
 #closeButton:hover { 
 	-fx-background-color: -highlight-colour;
 }
+
+#taskGridPane {
+ 	-fx-background-radius: 50;
+ 	-fx-background-color: -main-color;
+ 	
+ }
+ 
+#taskNameLabel {
+	-fx-font-family: "Avenir Next";
+	-fx-font-size: 17;
+	-fx-text-fill: white;
+	-fx-font-weight: bold; 
+}
+
+#dueDateLabel {
+	-fx-font-family: "Avenir Next";
+	-fx-font-size: 17;
+	-fx-text-fill: white;
+	-fx-font-weight: bold; 
+}
+
+#dueTimeLabel {
+	-fx-font-family: "Avenir Next";
+	-fx-font-size: 17;
+	-fx-text-fill: white;
+	-fx-font-weight: bold; 
+}
+
+#priorityLabel {
+	-fx-font-family: "Avenir Next";
+	-fx-font-size: 17;
+	-fx-text-fill: white;
+	-fx-font-weight: bold; 
+}
+
+#editButton {
+	-fx-background-radius: 15;
+}
