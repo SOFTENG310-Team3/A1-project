@@ -38,6 +38,17 @@ public class TaskController extends SceneController implements Initializable {
 	ObservableList<String> categoryList = FXCollections.observableArrayList("Work", "School", "Home");
 	ObservableList<String> repeatList = FXCollections.observableArrayList("Never","Daily","Weekly","Monthly", "Yearly");
 
+	public String name;
+	public String description;
+	public String repeat;
+	public String category;
+	public String dueDate;
+	public String dueTime;
+	public String location;
+	public int priorityNum;
+	
+	public int taskIndex = -1;
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		categoryComboBox.setItems(categoryList);
@@ -48,49 +59,47 @@ public class TaskController extends SceneController implements Initializable {
 	public void setMainScreenController(MainScreenController mainScreen) {
 		this.mainScreen = mainScreen;
 	}
-
-
-	public void addTask(ActionEvent event) {
-
+	
+	public boolean checkTask() {
 		boolean pass = true;
 		String fail = "-fx-border-color:red;";
 		resetFailure();
 
 		
-		String repeat = repeatComboBox.getValue();
+		this.repeat = repeatComboBox.getValue();
 		if (repeat == null) {
 			repeatComboBox.setStyle(fail);
 			pass = false;
 		}
 		
 		
-		String category = categoryComboBox.getValue();
+		this.category = categoryComboBox.getValue();
 		if (category == null) {
 			categoryComboBox.setStyle(fail);
 			pass = false;
 		}
 
-		String name = taskNameTextField.getText();
+		this.name = taskNameTextField.getText();
 		if (name.equals("")) {
 			taskNameTextField.setStyle(fail);
 			pass = false;
 		}
 		
-		String description = taskDescriptionTextField.getText();
+		this.description = taskDescriptionTextField.getText();
 		if (description.equals("")) {
 			taskDescriptionTextField.setStyle(fail);
 			pass = false;
 		}
 
 		
-		String location = locationTextField.getText();
+		this.location = locationTextField.getText();
 		if (location.equals("")) {
 			locationTextField.setStyle(fail);
 			pass = false;
 		}
 		
 		
-		int priorityNum = getPriorityToggle();
+		this.priorityNum = getPriorityToggle();
 		if ( priorityNum == 0) {
 			lowToggle.setStyle(fail);
 			medToggle.setStyle(fail);
@@ -99,20 +108,37 @@ public class TaskController extends SceneController implements Initializable {
 		}
 
 		
-		String dueDate = dayTextField.getText();
+		this.dueDate = dayTextField.getText();
 		if (!dateIsValid(dueDate)) {
 			pass = false;
 			dayTextField.setStyle(fail);
 		}
 		
+		this.dueTime = getTimeString();
 		
-		String dueTime = getTimeString();
+		return pass;
+	}
+
+
+	public void addTask(ActionEvent event) {
+		
+		boolean pass = checkTask();
 		
 		if(pass) {
 			Task task = new Task(name, description, location, category, repeat, dueDate, dueTime, priorityNum);
 			mainScreen.addTaskToList(task);
 		}
 		
+	}
+	
+	public void saveTask(ActionEvent event) {
+		
+		boolean pass = checkTask();
+		
+		if(pass) {
+			Task task = new Task(name, description, location, category, repeat, dueDate, dueTime, priorityNum);
+			mainScreen.saveTaskToList(taskIndex,task);
+		}
 	}
 
 	private void resetFailure() {
@@ -208,5 +234,13 @@ public class TaskController extends SceneController implements Initializable {
 
 		}
 		return false;
+	}
+	
+	public int getTaskIndex() {
+		return taskIndex;
+	}
+	
+	public void setTaskIndex(int taskIndex) {
+		this.taskIndex = taskIndex;
 	}
 }

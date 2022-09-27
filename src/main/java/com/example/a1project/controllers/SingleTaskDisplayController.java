@@ -45,6 +45,7 @@ public class SingleTaskDisplayController {
     void editTask(ActionEvent event) throws IOException {
     	TaskController taskController = mainScreen.showEditTaskPopup(event);
 		taskController.setMainScreenController(mainScreen);
+		taskController.setTaskIndex(mainScreen.getTaskIndex(task));
 		setEditTaskScene(taskController);
     }
 
