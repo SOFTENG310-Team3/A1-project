@@ -21,7 +21,7 @@ import javafx.scene.control.ToggleGroup;
 public class TaskController extends SceneController implements Initializable {
 
 	@FXML
-	public Button saveTaskButton;
+	public Button addTaskButton, saveTaskButton;
 	@FXML
 	public ComboBox<String> repeatComboBox;
 	@FXML
