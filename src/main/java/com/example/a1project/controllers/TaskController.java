@@ -10,6 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
@@ -19,6 +20,8 @@ import javafx.scene.control.ToggleGroup;
 
 public class TaskController extends SceneController implements Initializable {
 
+	@FXML
+	public Button saveTaskButton;
 	@FXML
 	public ComboBox<String> repeatComboBox;
 	@FXML

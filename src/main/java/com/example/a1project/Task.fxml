@@ -149,6 +149,7 @@
                </children>
             </HBox>
             <Button id="addTaskButton" fx:id="addTaskButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#addTask" prefHeight="59.0" prefWidth="702.0" text="Add Task  +" textFill="WHITE" />
+            <Button id="saveTaskButton" fx:id="saveTaskButton" disable="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="59.0" prefWidth="702.0" text="Save Task" textFill="WHITE" visible="false" />
          </children>
          <padding>
             <Insets bottom="40.0" left="40.0" right="40.0" top="60.0" />
