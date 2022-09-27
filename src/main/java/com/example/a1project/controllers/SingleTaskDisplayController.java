@@ -1,5 +1,7 @@
 package com.example.a1project.controllers;
 
+import java.io.IOException;
+
 import com.example.a1project.Task;
 
 import javafx.event.ActionEvent;
@@ -40,8 +42,10 @@ public class SingleTaskDisplayController {
     private Button editButton;
     
     @FXML
-    void editTask(ActionEvent event) {
-    	//TODO go to edit task scene with task information already in the scene
+    void editTask(ActionEvent event) throws IOException {
+    	TaskController taskController = mainScreen.showNewTaskPopup(event);
+		taskController.setMainScreenController(mainScreen);
+		setEditTaskScreen(taskController);
     }
 
     @FXML
@@ -73,6 +77,46 @@ public class SingleTaskDisplayController {
     
     public void setMainScreen(MainScreenController mainScreen) {
     	this.mainScreen = mainScreen;
+    }
+    
+    public void setEditTaskScreen(TaskController taskController) {
+    	
+    	taskController.taskNameTextField.setText(task.getName());
+    	taskController.taskDescriptionTextField.setText(task.getDescription());
+    	taskController.locationTextField.setText(task.getLocation());
+    	taskController.categoryComboBox.getSelectionModel().select(task.getCategory());
+    	taskController.dayTextField.setText(task.getDueDate());
+    	taskController.repeatComboBox.getSelectionModel().select(task.getFrequency());
+    	
+    	switch(task.getPriority()) {
+    	case 1:
+    		taskController.lowToggle.selectedProperty().set(true);
+    		break;
+    	case 2:
+    		taskController.medToggle.selectedProperty().set(true);
+    		break;
+    	case 3:
+    		taskController.highToggle.selectedProperty().set(true);
+    		break;
+    	default:
+    		break;
+    	}
+    	
+    	String[] dueTime = task.getDueTime().split(" ");
+    	taskController.timeTextField.setText(dueTime[0]);
+    	
+    	switch(dueTime[1]) {
+    	case "am":
+    		taskController.amToggle.selectedProperty().set(true);
+    		break;
+    	case "pm":
+    		taskController.pmToggle.selectedProperty().set(true);
+    		break;
+    	default:
+    		break;
+    	}
+    	
+    	
     }
 }
 
