@@ -45,7 +45,7 @@ public class SingleTaskDisplayController {
     void editTask(ActionEvent event) throws IOException {
     	TaskController taskController = mainScreen.showEditTaskPopup(event);
 		taskController.setMainScreenController(mainScreen);
-		setEditTaskScreen(taskController);
+		setEditTaskScene(taskController);
     }
 
     @FXML
@@ -79,7 +79,7 @@ public class SingleTaskDisplayController {
     	this.mainScreen = mainScreen;
     }
     
-    public void setEditTaskScreen(TaskController taskController) {
+    public void setEditTaskScene(TaskController taskController) {
     	
     	taskController.taskNameTextField.setText(task.getName());
     	taskController.taskDescriptionTextField.setText(task.getDescription());
