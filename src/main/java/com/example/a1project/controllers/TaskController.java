@@ -48,6 +48,7 @@ public class TaskController extends SceneController implements Initializable {
 	public int priorityNum;
 	
 	public int taskIndex = -1;
+	public Task editingTask;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -136,8 +137,18 @@ public class TaskController extends SceneController implements Initializable {
 		boolean pass = checkTask();
 		
 		if(pass) {
-			Task task = new Task(name, description, location, category, repeat, dueDate, dueTime, priorityNum);
-			mainScreen.saveTaskToList(taskIndex,task);
+			editingTask.setName(name);
+			editingTask.setDescription(description);
+			editingTask.setLocation(location);
+			editingTask.setCategory(category);
+			editingTask.setFrequency(repeat);
+			editingTask.setDueDate(dueDate);
+			editingTask.setDueTime(dueTime);
+			editingTask.setPriority(priorityNum);
+			
+			boolean isCompleted = editingTask.isCompleted();
+			
+			mainScreen.saveTaskToList(taskIndex,editingTask, isCompleted );
 		}
 	}
 
@@ -242,5 +253,13 @@ public class TaskController extends SceneController implements Initializable {
 	
 	public void setTaskIndex(int taskIndex) {
 		this.taskIndex = taskIndex;
+	}
+	
+	public Task getEditingTask() {
+		return editingTask;
+	}
+	
+	public void setEditingTask(Task editingTask) {
+		this.editingTask = editingTask;
 	}
 }

@@ -46,6 +46,7 @@ public class SingleTaskDisplayController {
     	TaskController taskController = mainScreen.showEditTaskPopup(event);
 		taskController.setMainScreenController(mainScreen);
 		taskController.setTaskIndex(mainScreen.getTaskIndex(task));
+		taskController.setEditingTask(task);
 		setEditTaskScene(taskController);
     }
 

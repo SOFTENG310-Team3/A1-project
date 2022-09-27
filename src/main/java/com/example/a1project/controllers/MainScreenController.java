@@ -72,11 +72,19 @@ public class MainScreenController extends SceneController implements Initializab
 		newCurrentTaskDisplay(task);
 	}
 	
-	public void saveTaskToList(int taskIndex, Task editedTask) {
-		Task oldTask = currentTasks.get(taskIndex);
-				
-		currentTasks.set(taskIndex, editedTask);
-		updateCurrentTaskDisplay(oldTask, editedTask, taskIndex);
+	public void saveTaskToList(int taskIndex, Task editedTask, boolean isCompleted) {
+		
+		if(isCompleted) {
+			Task oldTask = completedTasks.get(taskIndex);
+			
+			completedTasks.set(taskIndex, editedTask);
+			updateCompletedTaskDisplay(oldTask, editedTask, taskIndex);
+		} else {
+			Task oldTask = currentTasks.get(taskIndex);
+			
+			currentTasks.set(taskIndex, editedTask);
+			updateCurrentTaskDisplay(oldTask, editedTask, taskIndex);
+		}
 	}
 	
 	
@@ -109,7 +117,16 @@ public class MainScreenController extends SceneController implements Initializab
 		currentTaskAnchors.remove(oldTask);
 		currentTaskGridPane.add(anchor, 0, taskIndex);
 		currentTaskAnchors.put(task, anchor);
+	}
+	
+	private void updateCompletedTaskDisplay(Task oldTask, Task task, int taskIndex) {
+		AnchorPane anchor = setupTaskItem(task);
+		AnchorPane oldTaskAnchor = completedTaskAnchors.get(oldTask);
 		
+		completedTaskGridPane.getChildren().remove(oldTaskAnchor);
+		completedTaskAnchors.remove(oldTask);
+		completedTaskGridPane.add(anchor, 0, taskIndex);
+		completedTaskAnchors.put(task, anchor);
 	}
 	
 	private void newCurrentTaskDisplay(Task task) {
