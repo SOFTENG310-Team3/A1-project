@@ -134,7 +134,8 @@ public class MainScreenController extends SceneController implements Initializab
 		if (taskIndex == -1) {
 			return;
 		}
-		currentTaskGridPane.getChildren().remove(taskIndex);
+		AnchorPane currentTaskAnchor = currentTaskAnchors.get(task);
+		currentTaskGridPane.getChildren().remove(currentTaskAnchor);
 		currentTaskAnchors.remove(task);
 	}
 	
