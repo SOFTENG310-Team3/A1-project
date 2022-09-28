@@ -9,6 +9,7 @@ import com.example.a1project.Task;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
+import javafx.collections.ObservableMap;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +17,9 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Toggle;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
@@ -30,9 +34,15 @@ public class MainScreenController extends SceneController implements Initializab
     @FXML
     private GridPane completedTaskGridPane;
     
+    @FXML
+	public ToggleButton workToggle, schoolToggle, homeToggle;
+	public ToggleGroup category;
+    
     ObservableList<Task> currentTasks = FXCollections.observableArrayList();
 	ObservableList<Task> completedTasks = FXCollections.observableArrayList();
 	
+	ObservableMap<Task,AnchorPane> currentTaskAnchors = FXCollections.observableHashMap();
+	ObservableMap<Task,AnchorPane> completedTaskAnchors = FXCollections.observableHashMap();
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -81,6 +91,59 @@ public class MainScreenController extends SceneController implements Initializab
 		completedTasks.add(task);
 	}
 	
+	public void sortByCategory(ActionEvent event) {
+
+		String selectedCategory = getCategoryToggle();
+
+		switch (selectedCategory) {
+		case "Work":
+			setOnlyCategoryVisible("Work");
+			break;
+		case "School":
+			setOnlyCategoryVisible("School");
+			break;
+		case "Home":
+			setOnlyCategoryVisible("Home");
+			break;
+		default:
+			break;
+		}
+	}
+	
+	public void setOnlyCategoryVisible(String category) {
+		if (category != null) {
+			for (Task task : currentTasks) {
+				AnchorPane taskAnchor = currentTaskAnchors.get(task);
+				if (!task.getCategory().equals(category)) {
+					taskAnchor.setVisible(false);
+					taskAnchor.setManaged(false);
+				} else {
+					taskAnchor.setVisible(true);
+					taskAnchor.setManaged(true);
+				}
+			}
+		}
+	}
+
+	public String getCategoryToggle() {
+		
+		Toggle selectedCategory = category.getSelectedToggle();
+
+		String category = null;
+		if (selectedCategory != null) {
+
+			if (selectedCategory.equals(workToggle)) {
+				category = "Work";
+			} else if (selectedCategory.equals(schoolToggle)) {
+				category = "School";
+			} else if (selectedCategory.equals(homeToggle)) {
+				category = "Home";
+			}
+		}
+		
+		return category;
+	}
+	
 	
 	
 	
@@ -91,6 +154,9 @@ public class MainScreenController extends SceneController implements Initializab
 		
 		// Add to column 0 of GridPane
 		currentTaskGridPane.add(anchor, 0, currentTaskGridPane.getRowCount());
+		currentTaskAnchors.put(task, anchor);
+		
+		setOnlyCategoryVisible(getCategoryToggle());
 	}
 	
 	private void newCompletedTaskDisplay(Task task) {
@@ -99,6 +165,9 @@ public class MainScreenController extends SceneController implements Initializab
 		
 		// Add to column 0 of GridPane
 		completedTaskGridPane.add(anchor, 0, completedTaskGridPane.getRowCount());
+		completedTaskAnchors.put(task, anchor);
+		
+		setOnlyCategoryVisible(getCategoryToggle());
 	}
 	
 	private void removeFromCurrentTask(Task task) {
@@ -106,7 +175,9 @@ public class MainScreenController extends SceneController implements Initializab
 		if (taskIndex == -1) {
 			return;
 		}
-		currentTaskGridPane.getChildren().remove(taskIndex);
+		AnchorPane currentTaskAnchor = currentTaskAnchors.get(task);
+		currentTaskGridPane.getChildren().remove(currentTaskAnchor);
+		currentTaskAnchors.remove(task);
 	}
 	
 	
