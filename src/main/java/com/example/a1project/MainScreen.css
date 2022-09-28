@@ -90,3 +90,24 @@
 #categoriesVBox{
 	-fx-spacing: 5;
 }
+
+#categoriesHBox{
+	-fx-spacing: 80;
+}
+
+#resetFilterButton {
+	-fx-background-color: white;
+	-fx-background-radius: 20;
+	-fx-border-color: white;
+	-fx-border-width: 3 3 3 3;
+	-fx-border-radius: 20;
+	-fx-font-family: "Avenir Next";
+	-fx-font-size: 24;
+	-fx-font-weight: bold; 
+	-fx-text-fill: -main-color;
+	-fx-padding: 10 10 10 10;
+}
+
+#resetFilterButton:hover { 
+	-fx-background-color: -highlight-colour;
+}

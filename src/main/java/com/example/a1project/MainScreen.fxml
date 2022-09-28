@@ -13,6 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Rectangle?>
@@ -58,7 +59,12 @@
                                                    </toggleGroup>
                                                 </ToggleButton>
                                                 <ToggleButton fx:id="schoolToggle" mnemonicParsing="false" onAction="#sortByCategory" text="School" toggleGroup="$category" />
-                                                <ToggleButton fx:id="homeToggle" mnemonicParsing="false" onAction="#sortByCategory" text="Home" toggleGroup="$category" />
+                                                <HBox id="categoriesHBox" prefHeight="100.0" prefWidth="200.0">
+                                                   <children>
+                                                      <ToggleButton fx:id="homeToggle" mnemonicParsing="false" onAction="#sortByCategory" text="Home" toggleGroup="$category" />
+                                                      <Button id="resetFilterButton" fx:id="resetFilterButton" mnemonicParsing="false" text="Reset" />
+                                                   </children>
+                                                </HBox>
                                              </children>
                                           </VBox>
                                        </content>
