@@ -114,14 +114,22 @@ public class MainScreenController extends SceneController implements Initializab
 		if (category != null) {
 			for (Task task : currentTasks) {
 				AnchorPane taskAnchor = currentTaskAnchors.get(task);
-				if (!task.getCategory().equals(category)) {
-					taskAnchor.setVisible(false);
-					taskAnchor.setManaged(false);
-				} else {
-					taskAnchor.setVisible(true);
-					taskAnchor.setManaged(true);
-				}
+				setTaskVisibilityByCategory(task, category, taskAnchor);
 			}
+			for (Task task : completedTasks) {
+				AnchorPane taskAnchor = completedTaskAnchors.get(task);
+				setTaskVisibilityByCategory(task, category, taskAnchor);
+			}
+		}
+	}
+	
+	public void setTaskVisibilityByCategory(Task task, String category, AnchorPane taskAnchor) {
+		if (!task.getCategory().equals(category)) {
+			taskAnchor.setVisible(false);
+			taskAnchor.setManaged(false);
+		} else {
+			taskAnchor.setVisible(true);
+			taskAnchor.setManaged(true);
 		}
 	}
 
