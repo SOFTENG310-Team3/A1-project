@@ -97,28 +97,43 @@ public class MainScreenController extends SceneController implements Initializab
 
 		switch (selectedCategory) {
 		case "Work":
-			setOnlyCategoryVisible("Work");
+			setCategoryVisible("Work");
 			break;
 		case "School":
-			setOnlyCategoryVisible("School");
+			setCategoryVisible("School");
 			break;
 		case "Home":
-			setOnlyCategoryVisible("Home");
+			setCategoryVisible("Home");
+			break;
+		case "All":
+			setCategoryVisible("All");
 			break;
 		default:
 			break;
 		}
 	}
 	
-	public void setOnlyCategoryVisible(String category) {
+	public void setCategoryVisible(String category) {
 		if (category != null) {
-			for (Task task : currentTasks) {
-				AnchorPane taskAnchor = currentTaskAnchors.get(task);
-				setTaskVisibilityByCategory(task, category, taskAnchor);
-			}
-			for (Task task : completedTasks) {
-				AnchorPane taskAnchor = completedTaskAnchors.get(task);
-				setTaskVisibilityByCategory(task, category, taskAnchor);
+			AnchorPane taskAnchor;
+			if (category.equals("All")) {
+				for (Task task : currentTasks) {
+					taskAnchor = currentTaskAnchors.get(task);
+					setTaskVisible(task, taskAnchor);
+				}
+				for (Task task : completedTasks) {
+					taskAnchor = completedTaskAnchors.get(task);
+					setTaskVisible(task, taskAnchor);
+				}
+			} else {
+				for (Task task : currentTasks) {
+					taskAnchor = currentTaskAnchors.get(task);
+					setTaskVisibilityByCategory(task, category, taskAnchor);
+				}
+				for (Task task : completedTasks) {
+					taskAnchor = completedTaskAnchors.get(task);
+					setTaskVisibilityByCategory(task, category, taskAnchor);
+				}
 			}
 		}
 	}
@@ -132,12 +147,17 @@ public class MainScreenController extends SceneController implements Initializab
 			taskAnchor.setManaged(true);
 		}
 	}
+	
+	public void setTaskVisible(Task task, AnchorPane taskAnchor) {
+		taskAnchor.setVisible(true);
+		taskAnchor.setManaged(true);
+	}
 
 	public String getCategoryToggle() {
 		
 		Toggle selectedCategory = category.getSelectedToggle();
 
-		String category = null;
+		String category = "All";
 		if (selectedCategory != null) {
 
 			if (selectedCategory.equals(workToggle)) {
@@ -164,7 +184,7 @@ public class MainScreenController extends SceneController implements Initializab
 		currentTaskGridPane.add(anchor, 0, currentTaskGridPane.getRowCount());
 		currentTaskAnchors.put(task, anchor);
 		
-		setOnlyCategoryVisible(getCategoryToggle());
+		setCategoryVisible(getCategoryToggle());
 	}
 	
 	private void newCompletedTaskDisplay(Task task) {
@@ -174,8 +194,6 @@ public class MainScreenController extends SceneController implements Initializab
 		// Add to column 0 of GridPane
 		completedTaskGridPane.add(anchor, 0, completedTaskGridPane.getRowCount());
 		completedTaskAnchors.put(task, anchor);
-		
-		setOnlyCategoryVisible(getCategoryToggle());
 	}
 	
 	private void removeFromCurrentTask(Task task) {

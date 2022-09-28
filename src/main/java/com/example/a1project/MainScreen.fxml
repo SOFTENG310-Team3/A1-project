@@ -62,7 +62,6 @@
                                                 <HBox id="categoriesHBox" prefHeight="100.0" prefWidth="200.0">
                                                    <children>
                                                       <ToggleButton fx:id="homeToggle" mnemonicParsing="false" onAction="#sortByCategory" text="Home" toggleGroup="$category" />
-                                                      <Button id="resetFilterButton" fx:id="resetFilterButton" mnemonicParsing="false" text="Reset" />
                                                    </children>
                                                 </HBox>
                                              </children>
