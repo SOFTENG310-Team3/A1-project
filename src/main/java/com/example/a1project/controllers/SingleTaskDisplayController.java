@@ -38,9 +38,6 @@ public class SingleTaskDisplayController {
 
     @FXML
     private Button editButton;
-
-    @FXML
-    private Button deleteButton;
     
     @FXML
     void editTask(ActionEvent event) {
@@ -54,11 +51,6 @@ public class SingleTaskDisplayController {
     		mainScreen.completeTask(this.task);
     		this.task.completeTask();
     	}
-    }
-
-    @FXML
-    void deleteTask(ActionEvent event) {
-        mainScreen.deleteTask(task);
     }
     
     private MainScreenController mainScreen;
