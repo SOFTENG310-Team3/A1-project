@@ -24,6 +24,18 @@
 	-fx-background-color: -highlight-colour;
 }
 
+#saveTaskButton { 
+	-fx-background-color: -main-color;
+	-fx-background-radius: 20;
+	-fx-font-family: "Avenir Next";
+	-fx-font-size: 28;
+	-fx-font-weight: bold; 
+}
+
+#saveTaskButton:hover { 
+	-fx-background-color: -highlight-colour;
+}
+
 .label {
 	-fx-font-family: "Avenir Next";
 }
