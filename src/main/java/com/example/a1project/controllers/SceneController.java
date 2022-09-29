@@ -53,6 +53,30 @@ public class SceneController {
 		return taskController;
 	}
 	
+	public TaskController showEditTaskPopup(ActionEvent event) throws IOException {
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("/com/example/a1project/Task.fxml"));
+		
+		root = loader.load();
+		
+		TaskController taskController = loader.getController();
+		taskController.addTaskButton.setVisible(false);
+		taskController.addTaskButton.setManaged(false);
+		taskController.saveTaskButton.setVisible(true);
+		taskController.saveTaskButton.setDisable(false);
+		
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		Stage popup = new Stage();
+		popup.initModality(Modality.APPLICATION_MODAL);
+		popup.initOwner(stage);
+		popup.initStyle(StageStyle.UNDECORATED);
+		scene = new Scene(root);
+		popup.setScene(scene);
+		popup.show();
+		
+		return taskController;
+	}
+	
 	public void closeTaskPopup(ActionEvent event) {
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		stage.close();
