@@ -1,6 +1,8 @@
 package com.example.a1project.controllers;
 
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.ResourceBundle;
 
 import com.example.a1project.Task;
@@ -194,23 +196,31 @@ public class TaskController extends SceneController implements Initializable {
 		
 		return stringBuilder.toString();
 	}
-
-	public boolean dateIsValid(String dueDate ){
+	
+	/**
+	 * Check if the supplied date string is a valid date and is not before today
+	 * @param dueDate a date sting supplied by the user
+	 * @return whether the date is valid and after/or today.
+	 */
+	public static boolean dateIsValid(String dueDate ){
 
 		String[] dayCheck = dueDate.split("/");
-
-		if (dayCheck.length == 3) {
-			int year = Integer.parseInt(dayCheck[2]);
-			int month =Integer.parseInt(dayCheck[1]);
-			int day = Integer.parseInt(dayCheck[0]);
-
-			// Follows dd/mm/yy format
-			if ( month > 0 && month < 13 && day > 0 && day < 32 && year > 21){
-				return true;
-			}
+		
+		if (dayCheck.length != 3) {
+			return false;
 		}
+		
+		String date = dayCheck[2] + "-" + dayCheck[1] + "-" + dayCheck[0];
+		LocalDate due;
+		try {
+			due = LocalDate.parse(date);
+		} catch (DateTimeParseException e) {
+			return false;
+		}
+		LocalDate today = LocalDate.now();
 
-		return false;
+		return !today.isAfter(due);
+
 	}
 
 	public int getPriorityToggle() {
