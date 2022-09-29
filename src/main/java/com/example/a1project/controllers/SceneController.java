@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -45,8 +46,9 @@ public class SceneController {
 		Stage popup = new Stage();
 		popup.initModality(Modality.APPLICATION_MODAL);
 		popup.initOwner(stage);
-		popup.initStyle(StageStyle.UNDECORATED);
+		popup.initStyle(StageStyle.TRANSPARENT);
 		scene = new Scene(root);
+		scene.setFill(Color.TRANSPARENT);
 		popup.setScene(scene);
 		popup.show();
 		
@@ -69,8 +71,9 @@ public class SceneController {
 		Stage popup = new Stage();
 		popup.initModality(Modality.APPLICATION_MODAL);
 		popup.initOwner(stage);
-		popup.initStyle(StageStyle.UNDECORATED);
+		popup.initStyle(StageStyle.TRANSPARENT);
 		scene = new Scene(root);
+		scene.setFill(Color.TRANSPARENT);
 		popup.setScene(scene);
 		popup.show();
 		
