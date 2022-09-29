@@ -112,12 +112,21 @@ public class MainScreenController extends SceneController implements Initializab
 
 		switch (selectedCategory) {
 		case "Work":
+			workToggle.getStyleClass().add("selected-toggle");
+			schoolToggle.getStyleClass().remove("selected-toggle");
+			homeToggle.getStyleClass().remove("selected-toggle");
 			setCategoryVisible("Work");
 			break;
 		case "School":
+			workToggle.getStyleClass().remove("selected-toggle");
+			schoolToggle.getStyleClass().add("selected-toggle");
+			homeToggle.getStyleClass().remove("selected-toggle");
 			setCategoryVisible("School");
 			break;
 		case "Home":
+			workToggle.getStyleClass().remove("selected-toggle");
+			schoolToggle.getStyleClass().remove("selected-toggle");
+			homeToggle.getStyleClass().add("selected-toggle");
 			setCategoryVisible("Home");
 			break;
 		case "All":
