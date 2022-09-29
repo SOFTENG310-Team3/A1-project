@@ -1,9 +1,10 @@
 package com.example.a1project;
 
-import static org.junit.Assert.assertEquals;
-
+import com.example.a1project.controllers.TaskController;
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 public class TestSuite {
 	
@@ -25,10 +26,10 @@ public class TestSuite {
 	}
 	
 	@Test
-	public void testAcheivementConstructor() {
+	public void testAchievementConstructor() {
 		
 		assertEquals(ach.getDescription(),"Complete 10 tasks");
-		assertEquals(ach.getIsUnlocked(),false);
+		assertFalse(ach.getIsUnlocked());
 		assertEquals(ach.getMetric(),AchievementMetric.TASKS_COMPLETE);
 		assertEquals(ach.getRequiredMetricVal(),10);
 		assertEquals(ach.getCurrentMetricVal(),0);
@@ -47,8 +48,19 @@ public class TestSuite {
 	public void testSetisUnlocked() {
 	
 		ach.setIsUnlocked(true);
-		assertEquals(ach.getIsUnlocked(),true);
+		assertTrue(ach.getIsUnlocked());
 		
+	}
+
+	@Test
+	public void testDateParsing(){
+		assertFalse(TaskController.dateIsValid("29/02/2051"));
+		assertTrue(TaskController.dateIsValid("28/02/2051"));
+
+		assertFalse(TaskController.dateIsValid("20/05/2002"));
+		assertFalse(TaskController.dateIsValid("23-02-2051"));
+		assertFalse(TaskController.dateIsValid("3/2/2051"));
+		assertTrue(TaskController.dateIsValid("12/12/2051"));
 	}
 	
 
