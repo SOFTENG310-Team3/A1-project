@@ -4,17 +4,15 @@ public class Achievement {
 	
 	private final String description;
 	private boolean isUnlocked;
-	private final AchievementMetric metric; 
-	private final int requiredMetricVal; 
-	private int currentMetricVal; 
+	private final AchievementMetric metric;
+	private final int requiredMetricVal;
 	
 
-	public Achievement(String description, boolean isUnlocked, AchievementMetric metric, int requiredMetricVal, int currentMetricVal) {
+	public Achievement(String description, boolean isUnlocked, AchievementMetric metric, int requiredMetricVal) {
 		this.description = description;
 		this.isUnlocked = isUnlocked;
 		this.metric = metric;
 		this.requiredMetricVal = requiredMetricVal;
-		this.currentMetricVal = currentMetricVal;
 	}
 	
 	public String getDescription() {
@@ -28,22 +26,21 @@ public class Achievement {
 	public AchievementMetric getMetric() {
 		return this.metric;
 	}
-	
+
 	public int getRequiredMetricVal() {
 		return this.requiredMetricVal;
 	}
 	
-	public int getCurrentMetricVal () {
-		return this.currentMetricVal;
+	public void updateAchievement(AchievementMetric metric, int currentMetric) {
+		if(this.metric == metric){
+			if(currentMetric >= requiredMetricVal){
+				isUnlocked = true;
+			}
+		}
 	}
-	
-	public void setIsUnlocked(boolean status) {
-		this.isUnlocked = status;
-	}
-	
-	public void setCurrentMetricVal(int newVal) {
-		this.currentMetricVal = newVal;
-	}
-	
 
+	@Override
+	public String toString() {
+		return description + "," + isUnlocked + "," + metric.toString() + "," + requiredMetricVal;
+	}
 }
