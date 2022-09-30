@@ -71,7 +71,6 @@
 .combo-box {
 	-fx-background-color: white;
 	-fx-border-color: -main-color;
-	-fx-border-color: -main-color;
 	-fx-border-width: 3 3 3 3;
 	-fx-border-radius: 20;
 	-fx-font-family: "Avenir Next";
@@ -82,10 +81,10 @@
     -fx-background-color: white;
     -fx-background-radius: 20;
     -fx-border-color: -main-color;
-    -fx-text-fill: black ;
     -fx-font-family: "Avenir Next" ;
     -fx-border-color: -main-color;
     -fx-border-width: 3 3 3 3;
+    -fx-text-fill: black ;
 	-fx-border-radius: 20;
     
 }
@@ -99,8 +98,6 @@
 	-fx-text-fill: black;
 	-fx-background-color: -highlight-colour;
 }
-
-
 
 #closeButton {
 	-fx-background-color: transparent;
@@ -118,35 +115,15 @@
  	-fx-background-color: -main-color;
  	
  }
- 
-#taskNameLabel {
+
+#taskNameLabel, #dueDateLabel, #dueTimeLabel, #priorityLabel {
 	-fx-font-family: "Avenir Next";
 	-fx-font-size: 17;
 	-fx-text-fill: white;
 	-fx-font-weight: bold; 
 }
 
-#dueDateLabel {
-	-fx-font-family: "Avenir Next";
-	-fx-font-size: 17;
-	-fx-text-fill: white;
-	-fx-font-weight: bold; 
-}
-
-#dueTimeLabel {
-	-fx-font-family: "Avenir Next";
-	-fx-font-size: 17;
-	-fx-text-fill: white;
-	-fx-font-weight: bold; 
-}
-
-#priorityLabel {
-	-fx-font-family: "Avenir Next";
-	-fx-font-size: 17;
-	-fx-text-fill: white;
-	-fx-font-weight: bold; 
-}
-
-#editButton {
+#deleteButton, #editButton {
 	-fx-background-radius: 15;
+	-fx-font-size: 15;
 }
