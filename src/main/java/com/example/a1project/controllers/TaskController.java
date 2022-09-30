@@ -12,12 +12,14 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.stage.Stage;
 
 
 public class TaskController extends SceneController implements Initializable {
@@ -30,6 +32,9 @@ public class TaskController extends SceneController implements Initializable {
 	public ComboBox<String> categoryComboBox;
 	@FXML
 	public ToggleButton pmToggle, amToggle, lowToggle, medToggle, highToggle;
+	@FXML
+	public Stage stage;
+	
 	public ToggleGroup time, priority;
 	public TextField taskNameTextField, taskDescriptionTextField, locationTextField,dayTextField,timeTextField;
 	
@@ -271,5 +276,12 @@ public class TaskController extends SceneController implements Initializable {
 	
 	public void setEditingTask(Task editingTask) {
 		this.editingTask = editingTask;
+	}
+	
+	public void closeTaskPopup(ActionEvent event) {
+		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		stage.close();
+		
+		mainScreen.getDarkOverlay().setVisible(false);
 	}
 }

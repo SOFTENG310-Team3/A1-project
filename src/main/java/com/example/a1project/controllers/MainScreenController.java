@@ -58,6 +58,7 @@ public class MainScreenController extends SceneController implements Initializab
 	public void addNewTask(ActionEvent event) throws IOException {
 		TaskController taskController = showNewTaskPopup(event);
 		taskController.setMainScreenController(this);
+		this.getDarkOverlay().setVisible(true);
 	}
 	
 	/**
