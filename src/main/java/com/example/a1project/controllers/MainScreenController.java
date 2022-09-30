@@ -9,6 +9,7 @@ import com.example.a1project.Task;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
+import javafx.collections.ObservableMap;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,6 +33,9 @@ public class MainScreenController extends SceneController implements Initializab
     
     ObservableList<Task> currentTasks = FXCollections.observableArrayList();
 	ObservableList<Task> completedTasks = FXCollections.observableArrayList();
+	
+	ObservableMap<Task, AnchorPane> currentTaskAnchors = FXCollections.observableHashMap();
+	ObservableMap<Task, AnchorPane> completedTaskAnchors = FXCollections.observableHashMap();
 	
 	
 	@Override
@@ -68,6 +72,21 @@ public class MainScreenController extends SceneController implements Initializab
 		newCurrentTaskDisplay(task);
 	}
 	
+	public void saveTaskToList(int taskIndex, Task editedTask, boolean isCompleted) {
+		
+		if(isCompleted) {
+			Task oldTask = completedTasks.get(taskIndex);
+			
+			completedTasks.set(taskIndex, editedTask);
+			updateCompletedTaskDisplay(oldTask, editedTask, taskIndex);
+		} else {
+			Task oldTask = currentTasks.get(taskIndex);
+			
+			currentTasks.set(taskIndex, editedTask);
+			updateCurrentTaskDisplay(oldTask, editedTask, taskIndex);
+		}
+	}
+	
 	
 	/**
 	 * Complete task, remove from current tasks to completed tasks list
@@ -94,15 +113,42 @@ public class MainScreenController extends SceneController implements Initializab
 			completedTasks.remove(task);
 		}
 	}
+
+public int getTaskIndex(Task task) {
+		if(task.isCompleted()) {
+			return completedTasks.indexOf(task);
+		} else {
+			return currentTasks.indexOf(task);
+		}
+	}
 	
 	
+	private void updateCurrentTaskDisplay(Task oldTask, Task task, int taskIndex) {
+		AnchorPane anchor = setupTaskItem(task);
+		AnchorPane oldTaskAnchor = currentTaskAnchors.get(oldTask);
+		
+		currentTaskGridPane.getChildren().remove(oldTaskAnchor);
+		currentTaskAnchors.remove(oldTask);
+		currentTaskGridPane.add(anchor, 0, taskIndex);
+		currentTaskAnchors.put(task, anchor);
+	}
 	
+	private void updateCompletedTaskDisplay(Task oldTask, Task task, int taskIndex) {
+		AnchorPane anchor = setupTaskItem(task);
+		AnchorPane oldTaskAnchor = completedTaskAnchors.get(oldTask);
+		
+		completedTaskGridPane.getChildren().remove(oldTaskAnchor);
+		completedTaskAnchors.remove(oldTask);
+		completedTaskGridPane.add(anchor, 0, taskIndex);
+		completedTaskAnchors.put(task, anchor);
+	}
 	
 	private void newCurrentTaskDisplay(Task task) {
 		AnchorPane anchor = setupTaskItem(task);
 		
 		// Add to column 0 of GridPane
 		currentTaskGridPane.add(anchor, 0, currentTaskGridPane.getRowCount());
+		currentTaskAnchors.put(task, anchor);
 	}
 	
 	private void newCompletedTaskDisplay(Task task) {
@@ -111,6 +157,7 @@ public class MainScreenController extends SceneController implements Initializab
 		
 		// Add to column 0 of GridPane
 		completedTaskGridPane.add(anchor, 0, completedTaskGridPane.getRowCount());
+		completedTaskAnchors.put(task, anchor);
 	}
 	
 	private void removeFromCurrentTask(Task task) {
@@ -118,7 +165,9 @@ public class MainScreenController extends SceneController implements Initializab
 		if (taskIndex == -1) {
 			return;
 		}
-		currentTaskGridPane.getChildren().remove(taskIndex);
+		AnchorPane currentTaskAnchor = currentTaskAnchors.get(task);
+		currentTaskGridPane.getChildren().remove(currentTaskAnchor);
+		currentTaskAnchors.remove(task);
 	}
 
 	private void removeFromCompletedTask(Task task) {
