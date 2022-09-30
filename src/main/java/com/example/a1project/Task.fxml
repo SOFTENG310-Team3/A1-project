@@ -87,7 +87,7 @@
                         </ComboBox>
                         <HBox alignment="TOP_RIGHT" prefHeight="55.0" prefWidth="596.0">
                            <children>
-                              <TextField fx:id="dayTextField" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="224.0" promptText="dd/mm/yy">
+                              <TextField fx:id="dayTextField" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="70.0" prefWidth="224.0" promptText="dd/mm/yyyy">
                                  <HBox.margin>
                                     <Insets right="20.0" />
                                  </HBox.margin>
