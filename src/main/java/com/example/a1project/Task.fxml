@@ -138,7 +138,7 @@
                                     <Insets right="20.0" />
                                  </HBox.margin>
                               </ToggleButton>
-                              <ToggleButton id="priorityToggle" fx:id="highToggle" mnemonicParsing="false" prefHeight="70.0" prefWidth="200.0" text="!!" textFill="WHITE" toggleGroup="$priority" />
+                              <ToggleButton id="priorityToggle" fx:id="highToggle" mnemonicParsing="false" prefHeight="70.0" prefWidth="200.0" text="!!!" textFill="WHITE" toggleGroup="$priority" />
                            </children>
                            <VBox.margin>
                               <Insets bottom="15.0" />
