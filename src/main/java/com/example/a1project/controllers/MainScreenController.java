@@ -19,6 +19,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -30,6 +31,9 @@ public class MainScreenController extends SceneController implements Initializab
 
     @FXML
     private GridPane completedTaskGridPane;
+    
+    @FXML
+    private StackPane darkOverlay;
     
     ObservableList<Task> currentTasks = FXCollections.observableArrayList();
 	ObservableList<Task> completedTasks = FXCollections.observableArrayList();
@@ -108,6 +112,9 @@ public class MainScreenController extends SceneController implements Initializab
 		}
 	}
 	
+	public StackPane getDarkOverlay() {
+		return darkOverlay;
+	}
 	
 	private void updateCurrentTaskDisplay(Task oldTask, Task task, int taskIndex) {
 		AnchorPane anchor = setupTaskItem(task);

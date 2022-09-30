@@ -8,6 +8,10 @@
  	-fx-background-color: white;
  	-fx-font-family: "Avenir Next";
  }
+ 
+ #darkOverlay{
+ 	-fx-background-color: rgba(80,80,80, 0.5);
+ }
 
 .button { 
 	-fx-background-color: white;
