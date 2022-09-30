@@ -4,27 +4,18 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.example.a1project.AchievementManager;
 import com.example.a1project.Task;
 
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableMap;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
-import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.control.Toggle;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 public class MainScreenController extends SceneController implements Initializable {
 	
@@ -99,11 +90,10 @@ public class MainScreenController extends SceneController implements Initializab
 	 * @param task Task that is completed
 	 */
 	public void completeTask(Task task) {
-		removeFromCurrentTask(task);
-		currentTasks.remove(task);
-		
-		newCompletedTaskDisplay(task);
-		completedTasks.add(task);
+		if(removeFromCurrentTask(task)){
+			newCompletedTaskDisplay(task);
+			AchievementManager.incrementTasksComplete(true);
+		}
 	}
 	
 	public void sortByCategory(ActionEvent event) {
@@ -256,16 +246,20 @@ public int getTaskIndex(Task task) {
 		// Add to column 0 of GridPane
 		completedTaskGridPane.add(anchor, 0, completedTaskGridPane.getRowCount());
 		completedTaskAnchors.put(task, anchor);
+
+		completedTasks.add(task);
 	}
 	
-	private void removeFromCurrentTask(Task task) {
+	private boolean removeFromCurrentTask(Task task) {
 		int taskIndex = currentTasks.indexOf(task);
 		if (taskIndex == -1) {
-			return;
+			return false;
 		}
 		AnchorPane currentTaskAnchor = currentTaskAnchors.get(task);
 		currentTaskGridPane.getChildren().remove(currentTaskAnchor);
 		currentTaskAnchors.remove(task);
+		currentTasks.remove(task);
+		return true;
 	}
 
 	private void removeFromCompletedTask(Task task) {

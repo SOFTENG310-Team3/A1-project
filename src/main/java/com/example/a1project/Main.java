@@ -17,7 +17,7 @@ public class Main extends Application {
     	String css = this.getClass().getResource("Task.css").toExternalForm();
     	scene.getStylesheets().add(css);
     	
-    	Utility.loadAchievements();
+    	AchievementManager.loadAchievements();
     	
     	stage.setTitle("My To Do's");
     	stage.setResizable(false);

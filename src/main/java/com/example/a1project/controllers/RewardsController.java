@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import com.example.a1project.Achievement;
-import com.example.a1project.Utility;
+import com.example.a1project.AchievementManager;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,19 +29,19 @@ public class RewardsController extends SceneController implements Initializable 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
-		List<Achievement> achievements = Utility.getAchievements();
-		setCount(achievements.size(), Utility.getDone());
+		List<Achievement> achievements = AchievementManager.getAchievements();
+		setCount(achievements.size(), AchievementManager.getAchievementsComplete());
 		try {
-			for(int i=0; i<achievements.size(); i++) {
-				
+			for (Achievement achievement : achievements) {
+
 				FXMLLoader fxmlloader = new FXMLLoader();
 				fxmlloader.setLocation(getClass().getResource("/com/example/a1project/SingleAchievement.fxml"));
 				AnchorPane anchor = fxmlloader.load();
-				
+
 				CardViewController cardView = fxmlloader.getController();
-	
-				cardView.setData(achievements.get(i));
-				
+
+				cardView.setData(achievement);
+
 				gridPane.add(anchor, column, row++);
 				GridPane.setMargin(anchor, new Insets(10));
 			}

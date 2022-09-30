@@ -12,7 +12,7 @@
    <children>
       <HBox prefHeight="70.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fitHeight="71.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="trophyImageView" fitHeight="71.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/trophyblank.png" />
                </image>
