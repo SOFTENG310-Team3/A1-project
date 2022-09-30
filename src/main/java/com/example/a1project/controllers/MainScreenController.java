@@ -196,7 +196,21 @@ public class MainScreenController extends SceneController implements Initializab
 		return category;
 	}
 	
-	public int getTaskIndex(Task task) {
+	/**
+	 * Delete task, remove from tasks list
+	 * @param task Task to be deleted
+	 */
+	public void deleteTask(Task task) {
+		if(currentTasks.contains(task)) {
+			removeFromCurrentTask(task);
+			currentTasks.remove(task);
+		} else {
+			removeFromCompletedTask(task);
+			completedTasks.remove(task);
+		}
+	}
+
+public int getTaskIndex(Task task) {
 		if(task.isCompleted()) {
 			return completedTasks.indexOf(task);
 		} else {
@@ -252,6 +266,14 @@ public class MainScreenController extends SceneController implements Initializab
 		AnchorPane currentTaskAnchor = currentTaskAnchors.get(task);
 		currentTaskGridPane.getChildren().remove(currentTaskAnchor);
 		currentTaskAnchors.remove(task);
+	}
+
+	private void removeFromCompletedTask(Task task) {
+		int taskIndex = completedTasks.indexOf(task);
+		if (taskIndex == -1) {
+			return;
+		}
+		completedTaskGridPane.getChildren().remove(taskIndex);
 	}
 	
 	
