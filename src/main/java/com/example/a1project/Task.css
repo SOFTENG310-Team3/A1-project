@@ -12,6 +12,7 @@
 }
 
 .button {
+    -fx-background-color: #77B3D4;
     -fx-background-radius: 30;
     -fx-font-family: "Avenir Next";
     -fx-font-size: 48;
@@ -19,10 +20,6 @@
 
 .button:hover {
     -fx-background-color: #a8daf5;
-}
-
-#homeButton {
-    -fx-background-color: #77B3D4;
 }
 
 #addTaskButton, #saveTaskButton {
@@ -41,7 +38,7 @@
     -fx-font-family: "Avenir Next";
 }
 
-.toggle-button， .text-field, .combo-box, .combo-box .combo-box-popup .list-view, #deleteButton, #editButton {
+.toggle-button， .text-field, .combo-box, .combo-box .combo-box-popup .list-view {
     -fx-background-color: white;
     -fx-border-color: -main-color;
     -fx-border-width: 3 3 3 3;
