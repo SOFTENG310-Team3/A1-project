@@ -1,129 +1,114 @@
 * {
-	-main-color: #77B3D4;
-	-highlight-colour: #a8daf5;
-	}
-
+    -main-color: #77B3D4;
+    -highlight-colour: #a8daf5;
+}
 
 .root {
-	-fx-background-color: white;
-	-fx-background-radius: 25;
-	-fx-border-color: -main-color;
-	-fx-border-width: 6 6 6 6;
-	-fx-border-radius: 20;
+    -fx-background-color: white;
+    -fx-background-radius: 25;
+    -fx-border-color: -main-color;
+    -fx-border-width: 6 6 6 6;
+    -fx-border-radius: 20;
 }
 
-#addTaskButton { 
-	-fx-background-color: -main-color;
-	-fx-background-radius: 20;
-	-fx-font-family: "Avenir Next";
-	-fx-font-size: 28;
-	-fx-font-weight: bold; 
+.button {
+    -fx-background-color: #77B3D4;
+    -fx-background-radius: 30;
+    -fx-font-family: "Avenir Next";
+    -fx-font-size: 48;
 }
 
-#addTaskButton:hover { 
-	-fx-background-color: -highlight-colour;
+.button:hover {
+    -fx-background-color: #a8daf5;
 }
 
-#saveTaskButton { 
-	-fx-background-color: -main-color;
-	-fx-background-radius: 20;
-	-fx-font-family: "Avenir Next";
-	-fx-font-size: 28;
-	-fx-font-weight: bold; 
+#addTaskButton, #saveTaskButton {
+    -fx-background-color: -main-color;
+    -fx-background-radius: 20;
+    -fx-font-family: "Avenir Next";
+    -fx-font-size: 28;
+    -fx-font-weight: bold;
 }
 
-#saveTaskButton:hover { 
-	-fx-background-color: -highlight-colour;
+#addTaskButton:hover, #saveTaskButton:hover {
+    -fx-background-color: -highlight-colour;
 }
 
 .label {
-	-fx-font-family: "Avenir Next";
+    -fx-font-family: "Avenir Next";
+}
+
+.toggle-button， .text-field, .combo-box, .combo-box .combo-box-popup .list-view {
+    -fx-background-color: white;
+    -fx-border-color: -main-color;
+    -fx-border-width: 3 3 3 3;
+    -fx-border-radius: 20;
+    -fx-font-family: "Avenir Next";
 }
 
 .toggle-button {
-	-fx-background-color: white;
-	-fx-background-radius: 20;
-	-fx-border-color: -main-color;
-	-fx-border-width: 3 3 3 3;
-	-fx-border-radius: 20;
-	-fx-font-family: "Avenir Next";
-	-fx-font-size: 24;
-	-fx-font-weight: bold; 
-	-fx-text-fill: -main-color;
+    -fx-background-radius: 20;
+    -fx-font-size: 24;
+    -fx-font-weight: bold;
+    -fx-text-fill: -main-color;
 }
 
 .toggle-button:selected {
-	-fx-background-color: -main-color;
-	-fx-background-radius: 20;
-	-fx-text-fill: white;
+    -fx-background-color: -main-color;
+    -fx-background-radius: 20;
+    -fx-text-fill: white;
 }
 
 .text-field {
-	-fx-background-color: white;
-	-fx-background-radius: 20;
-	-fx-border-color: -main-color;
-	-fx-border-width: 3 3 3 3;
-	-fx-border-radius: 20;
-	-fx-font-family: "Avenir Next";
-	-fx-font-size: 24;
+    -fx-background-radius: 20;
+    -fx-font-size: 24;
 }
 
 .combo-box {
-	-fx-background-color: white;
-	-fx-border-color: -main-color;
-	-fx-border-width: 3 3 3 3;
-	-fx-border-radius: 20;
-	-fx-font-family: "Avenir Next";
-	-fx-font-size: 24;
+    -fx-font-size: 24;
 }
 
 .combo-box .combo-box-popup .list-view {
-    -fx-background-color: white;
+    -fx-text-fill: black;
     -fx-background-radius: 20;
-    -fx-border-color: -main-color;
-    -fx-font-family: "Avenir Next" ;
-    -fx-border-color: -main-color;
-    -fx-border-width: 3 3 3 3;
-    -fx-text-fill: black ;
-	-fx-border-radius: 20;
-    
+
 }
 
 .combo-box .combo-box-popup .list-cell {
-	-fx-background-color: transparent;
-	-fx-background-radius: 20;
+    -fx-background-color: transparent;
+    -fx-background-radius: 20;
 }
 
 .combo-box .combo-box-popup .list-cell:selected, .combo-box .combo-box-popup .list-cell:hover {
-	-fx-text-fill: black;
-	-fx-background-color: -highlight-colour;
+    -fx-text-fill: black;
+    -fx-background-color: -highlight-colour;
 }
 
 #closeButton {
-	-fx-background-color: transparent;
-	-fx-font-family: "Avenir Next";
-	-fx-font-size: 24;
-	-fx-font-weight: bold; 
+    -fx-background-color: transparent;
+    -fx-font-family: "Avenir Next";
+    -fx-font-size: 24;
+    -fx-font-weight: bold;
 }
 
-#closeButton:hover { 
-	-fx-background-color: -highlight-colour;
+#closeButton:hover {
+    -fx-background-color: -highlight-colour;
 }
 
 #taskGridPane {
- 	-fx-background-radius: 50;
- 	-fx-background-color: -main-color;
- 	
- }
+    -fx-background-radius: 50;
+    -fx-background-color: -main-color;
+
+}
 
 #taskNameLabel, #dueDateLabel, #dueTimeLabel, #priorityLabel {
-	-fx-font-family: "Avenir Next";
-	-fx-font-size: 17;
-	-fx-text-fill: white;
-	-fx-font-weight: bold; 
+    -fx-font-family: "Avenir Next";
+    -fx-font-size: 17;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
 }
 
 #deleteButton, #editButton {
-	-fx-background-radius: 15;
-	-fx-font-size: 15;
+    -fx-background-radius: 15;
+    -fx-font-size: 15;
 }
