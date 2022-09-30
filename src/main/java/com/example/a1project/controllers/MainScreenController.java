@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.example.a1project.AchievementManager;
 import com.example.a1project.Task;
 
 import javafx.collections.FXCollections;
@@ -88,6 +89,7 @@ public class MainScreenController extends SceneController implements Initializab
 	public void completeTask(Task task) {
 		if(removeFromCurrentTask(task)){
 			newCompletedTaskDisplay(task);
+			AchievementManager.incrementTasksComplete(true);
 		}
 	}
 	

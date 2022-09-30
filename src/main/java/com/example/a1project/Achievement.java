@@ -33,9 +33,7 @@ public class Achievement {
 	
 	public void updateAchievement(AchievementMetric metric, int currentMetric) {
 		if(this.metric == metric){
-			if(currentMetric >= requiredMetricVal){
-				isUnlocked = true;
-			}
+			isUnlocked =(currentMetric >= requiredMetricVal);
 		}
 	}
 

@@ -40,13 +40,14 @@ public class AchievementManager {
 			while((line=br.readLine()) !=null) {
 				String[] variable = line.split(",");
 				String description = variable[0];
-				Boolean isUnlocked = Boolean.parseBoolean(variable[1]);
+				boolean isUnlocked = Boolean.parseBoolean(variable[1]);
 				AchievementMetric metric = findMetric(variable[2]);
 				int required = Integer.parseInt(variable[3]);
 				
 				achievementArray.add(new Achievement(description, isUnlocked, metric,required));
 			}
-		} 
+		}
+		updateAchievements();
 	}
 
 	public static void writeAchievements(){
@@ -61,10 +62,15 @@ public class AchievementManager {
 		}
 	}
 
+	/**
+	 *
+	 * @param onTime true if the task was completed on time
+	 */
 	public static void incrementTasksComplete(boolean onTime){
 		tasksComplete++;
 		if(onTime)tasksCompleteOnTime++;
 		updateAchievements();
+		writeAchievements();
 	}
 
 	private static void updateAchievements() {
@@ -72,7 +78,6 @@ public class AchievementManager {
 			ach.updateAchievement(AchievementMetric.TASKS_COMPLETE, tasksComplete);
 			ach.updateAchievement(AchievementMetric.TASKS_COMPLETE_ON_TIME,tasksCompleteOnTime);
 		}
-		writeAchievements();
 	}
 
 	public static AchievementMetric findMetric(String line) {
