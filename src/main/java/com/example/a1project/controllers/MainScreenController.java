@@ -129,6 +129,9 @@ public class MainScreenController extends SceneController implements Initializab
 			break;
 		case "All":
 			setCategoryVisible("All");
+			workToggle.getStyleClass().remove("selected-toggle");
+			schoolToggle.getStyleClass().remove("selected-toggle");
+			homeToggle.getStyleClass().remove("selected-toggle");
 			break;
 		default:
 			break;
