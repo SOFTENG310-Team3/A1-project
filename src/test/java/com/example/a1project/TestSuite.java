@@ -19,9 +19,8 @@ public class TestSuite {
 		boolean isUnlocked = false;
 		AchievementMetric metric = AchievementMetric.TASKS_COMPLETE;
 		int requiredVal = 10;
-		int currentVal = 0;
 		
-		ach = new Achievement(description, isUnlocked, metric, requiredVal, currentVal);
+		ach = new Achievement(description, isUnlocked, metric, requiredVal);
 		
 	}
 	
@@ -32,23 +31,6 @@ public class TestSuite {
 		assertFalse(ach.getIsUnlocked());
 		assertEquals(ach.getMetric(),AchievementMetric.TASKS_COMPLETE);
 		assertEquals(ach.getRequiredMetricVal(),10);
-		assertEquals(ach.getCurrentMetricVal(),0);
-		
-	}
-	
-	@Test
-	public void testSetCurrentMetricVal() {
-		
-		ach.setCurrentMetricVal(2);
-		assertEquals(ach.getCurrentMetricVal(),2);
-		
-	}
-	
-	//@Test
-	public void testSetisUnlocked() {
-	
-		ach.setIsUnlocked(true);
-		assertTrue(ach.getIsUnlocked());
 		
 	}
 

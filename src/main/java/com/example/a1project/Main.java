@@ -14,10 +14,10 @@ public class Main extends Application {
     	Parent root = FXMLLoader.load(getClass().getResource("Home.fxml"));
     	Scene scene = new Scene(root);
     	
-    	String css = this.getClass().getResource("ToDo.css").toExternalForm();
+    	String css = this.getClass().getResource("Task.css").toExternalForm();
     	scene.getStylesheets().add(css);
     	
-    	Utility.loadAchievements();
+    	AchievementManager.loadAchievements();
     	
     	stage.setTitle("My To Do's");
     	stage.setResizable(false);

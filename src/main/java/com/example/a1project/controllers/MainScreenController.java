@@ -4,22 +4,23 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.example.a1project.AchievementManager;
 import com.example.a1project.Task;
 
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableMap;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
-import javafx.scene.Node;
-import javafx.scene.Scene;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.control.Toggle;
+
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -34,13 +35,15 @@ public class MainScreenController extends SceneController implements Initializab
     
     @FXML
     private StackPane darkOverlay;
-    
+	public ToggleButton workToggle, schoolToggle, homeToggle;
+	public ToggleGroup category;
+	
     ObservableList<Task> currentTasks = FXCollections.observableArrayList();
+    
 	ObservableList<Task> completedTasks = FXCollections.observableArrayList();
 	
 	ObservableMap<Task, AnchorPane> currentTaskAnchors = FXCollections.observableHashMap();
 	ObservableMap<Task, AnchorPane> completedTaskAnchors = FXCollections.observableHashMap();
-	
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -98,14 +101,117 @@ public class MainScreenController extends SceneController implements Initializab
 	 * @param task Task that is completed
 	 */
 	public void completeTask(Task task) {
-		removeFromCurrentTask(task);
-		currentTasks.remove(task);
-		
-		newCompletedTaskDisplay(task);
-		completedTasks.add(task);
+		if(removeFromCurrentTask(task)){
+			newCompletedTaskDisplay(task);
+			AchievementManager.incrementTasksComplete(true);
+		}
 	}
 	
-	public int getTaskIndex(Task task) {
+	public void sortByCategory(ActionEvent event) {
+
+		String selectedCategory = getCategoryToggle();
+
+		switch (selectedCategory) {
+		case "Work":
+			workToggle.getStyleClass().add("selected-toggle");
+			schoolToggle.getStyleClass().remove("selected-toggle");
+			homeToggle.getStyleClass().remove("selected-toggle");
+			setCategoryVisible("Work");
+			break;
+		case "School":
+			workToggle.getStyleClass().remove("selected-toggle");
+			schoolToggle.getStyleClass().add("selected-toggle");
+			homeToggle.getStyleClass().remove("selected-toggle");
+			setCategoryVisible("School");
+			break;
+		case "Home":
+			workToggle.getStyleClass().remove("selected-toggle");
+			schoolToggle.getStyleClass().remove("selected-toggle");
+			homeToggle.getStyleClass().add("selected-toggle");
+			setCategoryVisible("Home");
+			break;
+		case "All":
+			setCategoryVisible("All");
+			break;
+		default:
+			break;
+		}
+	}
+	
+	public void setCategoryVisible(String category) {
+		if (category != null) {
+			AnchorPane taskAnchor;
+			if (category.equals("All")) {
+				for (Task task : currentTasks) {
+					taskAnchor = currentTaskAnchors.get(task);
+					setTaskVisible(task, taskAnchor);
+				}
+				for (Task task : completedTasks) {
+					taskAnchor = completedTaskAnchors.get(task);
+					setTaskVisible(task, taskAnchor);
+				}
+			} else {
+				for (Task task : currentTasks) {
+					taskAnchor = currentTaskAnchors.get(task);
+					setTaskVisibilityByCategory(task, category, taskAnchor);
+				}
+				for (Task task : completedTasks) {
+					taskAnchor = completedTaskAnchors.get(task);
+					setTaskVisibilityByCategory(task, category, taskAnchor);
+				}
+			}
+		}
+	}
+	
+	public void setTaskVisibilityByCategory(Task task, String category, AnchorPane taskAnchor) {
+		if (!task.getCategory().equals(category)) {
+			taskAnchor.setVisible(false);
+			taskAnchor.setManaged(false);
+		} else {
+			taskAnchor.setVisible(true);
+			taskAnchor.setManaged(true);
+		}
+	}
+	
+	public void setTaskVisible(Task task, AnchorPane taskAnchor) {
+		taskAnchor.setVisible(true);
+		taskAnchor.setManaged(true);
+	}
+
+	public String getCategoryToggle() {
+		
+		Toggle selectedCategory = category.getSelectedToggle();
+
+		String category = "All";
+		if (selectedCategory != null) {
+
+			if (selectedCategory.equals(workToggle)) {
+				category = "Work";
+			} else if (selectedCategory.equals(schoolToggle)) {
+				category = "School";
+			} else if (selectedCategory.equals(homeToggle)) {
+				category = "Home";
+			}
+		}
+		
+		return category;
+	}
+	
+	/**
+	 * Delete task, remove from tasks list
+	 * @param task Task to be deleted
+	 */
+	public void deleteTask(Task task) {
+		if(currentTasks.contains(task)) {
+			removeFromCurrentTask(task);
+			currentTasks.remove(task);
+		} else {
+			removeFromCompletedTask(task);
+			completedTasks.remove(task);
+		}
+	}
+
+public int getTaskIndex(Task task) {
 		if(task.isCompleted()) {
 			return completedTasks.indexOf(task);
 		} else {
@@ -143,6 +249,8 @@ public class MainScreenController extends SceneController implements Initializab
 		// Add to column 0 of GridPane
 		currentTaskGridPane.add(anchor, 0, currentTaskGridPane.getRowCount());
 		currentTaskAnchors.put(task, anchor);
+		
+		setCategoryVisible(getCategoryToggle());
 	}
 	
 	private void newCompletedTaskDisplay(Task task) {
@@ -152,16 +260,28 @@ public class MainScreenController extends SceneController implements Initializab
 		// Add to column 0 of GridPane
 		completedTaskGridPane.add(anchor, 0, completedTaskGridPane.getRowCount());
 		completedTaskAnchors.put(task, anchor);
+
+		completedTasks.add(task);
 	}
 	
-	private void removeFromCurrentTask(Task task) {
+	private boolean removeFromCurrentTask(Task task) {
 		int taskIndex = currentTasks.indexOf(task);
 		if (taskIndex == -1) {
-			return;
+			return false;
 		}
 		AnchorPane currentTaskAnchor = currentTaskAnchors.get(task);
 		currentTaskGridPane.getChildren().remove(currentTaskAnchor);
 		currentTaskAnchors.remove(task);
+		currentTasks.remove(task);
+		return true;
+	}
+
+	private void removeFromCompletedTask(Task task) {
+		int taskIndex = completedTasks.indexOf(task);
+		if (taskIndex == -1) {
+			return;
+		}
+		completedTaskGridPane.getChildren().remove(taskIndex);
 	}
 	
 	
