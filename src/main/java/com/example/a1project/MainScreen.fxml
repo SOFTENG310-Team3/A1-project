@@ -188,5 +188,6 @@
             </AnchorPane>
         </items>
       </SplitPane>
+      <StackPane fx:id="darkOverlay" minWidth="1200.0" prefHeight="800.0" prefWidth="1200.0" visible="false" />
    </children>
 </AnchorPane>
