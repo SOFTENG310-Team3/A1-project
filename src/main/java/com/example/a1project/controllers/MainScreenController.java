@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -38,8 +39,11 @@ public class MainScreenController extends SceneController implements Initializab
     
     @FXML
     private StackPane darkOverlay;
-	public ToggleButton workToggle, schoolToggle, homeToggle;
+	public ToggleButton workToggle, schoolToggle, homeToggle, lowToggle, medToggle, highToggle;
 	public ToggleGroup category;
+	public ToggleGroup priority;
+	
+	public String[] currentFilters = new String[3];
 	
 	@FXML
 	private Label categoryFilterTag, priorityFilterTag, dueDateFilterTage;
@@ -168,60 +172,146 @@ public class MainScreenController extends SceneController implements Initializab
 		String selectedCategory = getCategoryToggle();
 
 		switch (selectedCategory) {
-    
-			case "Work" -> {
-				workToggle.getStyleClass().add("selected-toggle");
-				schoolToggle.getStyleClass().remove("selected-toggle");
-				homeToggle.getStyleClass().remove("selected-toggle");
-				setCategoryVisible("Work");
-			}
-			case "School" -> {
-				workToggle.getStyleClass().remove("selected-toggle");
-				schoolToggle.getStyleClass().add("selected-toggle");
-				homeToggle.getStyleClass().remove("selected-toggle");
-				setCategoryVisible("School");
-			}
-			case "Home" -> {
-				workToggle.getStyleClass().remove("selected-toggle");
-				schoolToggle.getStyleClass().remove("selected-toggle");
-				homeToggle.getStyleClass().add("selected-toggle");
-				setCategoryVisible("Home");
-			}
-			case "All" -> {
-				setCategoryVisible("All");
-				workToggle.getStyleClass().remove("selected-toggle");
-				schoolToggle.getStyleClass().remove("selected-toggle");
-				homeToggle.getStyleClass().remove("selected-toggle");
-			}
-			default -> {
-			}
+		case "Work" -> {
+			workToggle.getStyleClass().add("selected-toggle");
+			schoolToggle.getStyleClass().remove("selected-toggle");
+			homeToggle.getStyleClass().remove("selected-toggle");
+			setCategoryTag("Work");
+			currentFilters[0] = "Work";
+			displayFilteredTasks(currentFilters, currentTasks, currentTaskAnchors);
+			displayFilteredTasks(currentFilters, completedTasks, completedTaskAnchors);
+		}
+		case "School" -> {
+			workToggle.getStyleClass().remove("selected-toggle");
+			schoolToggle.getStyleClass().add("selected-toggle");
+			homeToggle.getStyleClass().remove("selected-toggle");
+			setCategoryTag("School");
+			currentFilters[0] = "School";
+			displayFilteredTasks(currentFilters, currentTasks, currentTaskAnchors);
+			displayFilteredTasks(currentFilters, completedTasks, completedTaskAnchors);
+		}
+		case "Home" ->{
+			workToggle.getStyleClass().remove("selected-toggle");
+			schoolToggle.getStyleClass().remove("selected-toggle");
+			homeToggle.getStyleClass().add("selected-toggle");
+			setCategoryTag("Home");
+			currentFilters[0] = "Home";
+			displayFilteredTasks(currentFilters, currentTasks, currentTaskAnchors);
+			displayFilteredTasks(currentFilters, completedTasks, completedTaskAnchors);
+		}
+		case "All" ->{
+			workToggle.getStyleClass().remove("selected-toggle");
+			schoolToggle.getStyleClass().remove("selected-toggle");
+			homeToggle.getStyleClass().remove("selected-toggle");
+			setCategoryTag("All");
+			currentFilters[0] = null;
+			displayFilteredTasks(currentFilters, currentTasks, currentTaskAnchors);
+			displayFilteredTasks(currentFilters, completedTasks, completedTaskAnchors);
+		}
+		default -> {
+			
+		}
+
 		}
 	}
 	
-	public void setCategoryVisible(String category) {
-		if (category != null) {
-			AnchorPane taskAnchor;
-			if (category.equals("All")) {
-				for (Task task : currentTasks) {
-					taskAnchor = currentTaskAnchors.get(task);
-					setTaskVisible(task, taskAnchor);
+	
+	public void sortByPriority(ActionEvent event) {
+		String selectedPriority = getPriorityToggle();
+
+		switch (selectedPriority) {
+		case "Low":
+			lowToggle.getStyleClass().add("selected-toggle");
+			medToggle.getStyleClass().remove("selected-toggle");
+			highToggle.getStyleClass().remove("selected-toggle");
+			setPriorityTag("Low");
+			currentFilters[1] = "1";
+			displayFilteredTasks(currentFilters, currentTasks, currentTaskAnchors);
+			displayFilteredTasks(currentFilters, completedTasks, completedTaskAnchors);
+			break;
+		case "Medium":
+			lowToggle.getStyleClass().remove("selected-toggle");
+			medToggle.getStyleClass().add("selected-toggle");
+			highToggle.getStyleClass().remove("selected-toggle");
+			setPriorityTag("Medium");
+			currentFilters[1] = "2";
+			displayFilteredTasks(currentFilters, currentTasks, currentTaskAnchors);
+			displayFilteredTasks(currentFilters, completedTasks, completedTaskAnchors);
+			break;
+		case "High":
+			lowToggle.getStyleClass().remove("selected-toggle");
+			medToggle.getStyleClass().remove("selected-toggle");
+			highToggle.getStyleClass().add("selected-toggle");
+			setPriorityTag("High");
+			currentFilters[1] = "3";
+			displayFilteredTasks(currentFilters, currentTasks, currentTaskAnchors);
+			displayFilteredTasks(currentFilters, completedTasks, completedTaskAnchors);
+			break;
+		case "All":
+			lowToggle.getStyleClass().remove("selected-toggle");
+			medToggle.getStyleClass().remove("selected-toggle");
+			highToggle.getStyleClass().remove("selected-toggle");
+			setPriorityTag("All");
+			currentFilters[1] = null;
+			displayFilteredTasks(currentFilters, currentTasks, currentTaskAnchors);
+			displayFilteredTasks(currentFilters, completedTasks, completedTaskAnchors);
+			break;
+		default:
+			break;
+		}
+	}
+	
+	
+	private String getPriorityToggle() {
+		Toggle selectedPriority = priority.getSelectedToggle();
+
+		String priority = "All";
+		if (selectedPriority != null) {
+
+			if (selectedPriority.equals(lowToggle)) {
+				priority = "Low";
+			} else if (selectedPriority.equals(medToggle)) {
+				priority = "Medium";
+			} else if (selectedPriority.equals(highToggle)) {
+				priority = "High";
+			}
+		}
+		
+		return priority;
+	}
+	
+	public void displayFilteredTasks(String[] filters, ObservableList<Task> taskList, ObservableMap<Task, AnchorPane> taskAnchorPanes) {
+		ArrayList<Task> tasksToDisplay = new ArrayList<Task>();
+		for(Task task: taskList) {
+			tasksToDisplay.add(task);
+		}
+		
+		for(String filter: filters) {
+			if(filter != null) {
+				tasksToDisplay.removeAll(getTasksWithoutFilter(filter,tasksToDisplay));
 				}
-				for (Task task : completedTasks) {
-					taskAnchor = completedTaskAnchors.get(task);
-					setTaskVisible(task, taskAnchor);
-				}
+			}
+		
+		AnchorPane currentTaskAnchor;
+		for(Task task: taskList) {
+			currentTaskAnchor = taskAnchorPanes.get(task);
+			if(tasksToDisplay.contains(task)) {
+				setTaskVisible(currentTaskAnchor);
 			} else {
-				for (Task task : currentTasks) {
-					taskAnchor = currentTaskAnchors.get(task);
-					setTaskVisibilityByCategory(task, category, taskAnchor);
-				}
-				for (Task task : completedTasks) {
-					taskAnchor = completedTaskAnchors.get(task);
-					setTaskVisibilityByCategory(task, category, taskAnchor);
-				}
+				setTaskInvisible(currentTaskAnchor);
 			}
 		}
 	}
+
+		public ArrayList<Task> getTasksWithoutFilter(String filter, ArrayList<Task> currentTasks) {
+			ArrayList<Task> filteredOutTasks = new ArrayList<Task>();
+			for (Task task : currentTasks) {
+				if (!(task.getCategory().equals(filter) ||String.valueOf(task.getPriority()).equals(filter) || task.getDueDate().equals((filter)))) {
+					filteredOutTasks.add(task);
+				}
+			}
+			return filteredOutTasks;
+		}
 	
 	public void setCategoryTag(String category) {
 		
@@ -241,31 +331,47 @@ public class MainScreenController extends SceneController implements Initializab
 		case "All":
 			categoryFilterTag.setVisible(false);
 			break;
+		default:
+			break;
 		}
 		
 	}
 	
-	public void setPriorityTag() {
-		//TODO: Method to show the current priority filter next to the Priority titledPane. Implementation to be done with sorting by priority.
+	public void setPriorityTag(String priority) {
+		switch(priority) {
+		case "Low":
+			priorityFilterTag.setVisible(true);
+			priorityFilterTag.setText("Low");
+			break;
+		case "Medium":
+			priorityFilterTag.setVisible(true);
+			priorityFilterTag.setText("Medium");
+			break;
+		case "High":
+			priorityFilterTag.setVisible(true);
+			priorityFilterTag.setText("High");
+			break;
+		case "All":
+			priorityFilterTag.setVisible(false);
+			break;
+		default:
+			break;
+		}
 	}
 	
 	public void setDueDateTag() {
 		//TODO: Method to show the current due date filter next to the Due Date titledPane. Implementation to be done with sorting by due date.
 	}
 	
-	public void setTaskVisibilityByCategory(Task task, String category, AnchorPane taskAnchor) {
-		if (!task.getCategory().equals(category)) {
-			taskAnchor.setVisible(false);
-			taskAnchor.setManaged(false);
-		} else {
-			taskAnchor.setVisible(true);
-			taskAnchor.setManaged(true);
-		}
-	}
 	
-	public void setTaskVisible(Task task, AnchorPane taskAnchor) {
+	public void setTaskVisible(AnchorPane taskAnchor) {
 		taskAnchor.setVisible(true);
 		taskAnchor.setManaged(true);
+	}
+	
+	public void setTaskInvisible(AnchorPane taskAnchor) {
+		taskAnchor.setVisible(false);
+		taskAnchor.setManaged(false);
 	}
 
 	public String getCategoryToggle() {
@@ -342,7 +448,8 @@ public class MainScreenController extends SceneController implements Initializab
 
 		currentTasks.add(task);
 		
-		setCategoryVisible(getCategoryToggle());
+		displayFilteredTasks(currentFilters,currentTasks,currentTaskAnchors);
+		
 	}
 	
 	private void newCompletedTaskDisplay(Task task) {

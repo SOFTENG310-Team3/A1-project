@@ -1,10 +1,10 @@
-0
-0
-Complete 1 task,false,TASKS_COMPLETE,1
+1
+1
+Complete 1 task,true,TASKS_COMPLETE,1
 Complete 10 tasks,false,TASKS_COMPLETE,10
 Complete 50 tasks,false,TASKS_COMPLETE,50
 Complete 100 tasks,false,TASKS_COMPLETE,100
-Complete 1 task on time,false,TASKS_COMPLETE_ON_TIME,1
+Complete 1 task on time,true,TASKS_COMPLETE_ON_TIME,1
 Complete 10 tasks on time,false,TASKS_COMPLETE_ON_TIME,10
 Complete 50 tasks on time,false,TASKS_COMPLETE_ON_TIME,50
 Complete 100 tasks on time,false,TASKS_COMPLETE_ON_TIME,100
