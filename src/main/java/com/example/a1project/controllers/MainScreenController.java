@@ -32,7 +32,8 @@ public class MainScreenController extends SceneController implements Initializab
     @FXML
     private StackPane darkOverlay;
 	public ToggleButton workToggle, schoolToggle, homeToggle, lowToggle, medToggle, highToggle;
-	public ToggleGroup category, priority;
+	public ToggleGroup category;
+	public ToggleGroup priority;
 	
     ObservableList<Task> currentTasks = FXCollections.observableArrayList();
     
@@ -48,7 +49,6 @@ public class MainScreenController extends SceneController implements Initializab
 		// Achieved by using:
 		
 		// currentTasks.addListener(new ListChangeListener<Task>() { }});
-		lowToggle.setText("Hello");
 	}
 	
 	
@@ -138,6 +138,92 @@ public class MainScreenController extends SceneController implements Initializab
 		}
 	}
 	
+	public void sortByPriority(ActionEvent event) {
+		String selectedPriority = getPriorityToggle();
+
+		switch (selectedPriority) {
+		case "Low":
+			lowToggle.getStyleClass().add("selected-toggle");
+			medToggle.getStyleClass().remove("selected-toggle");
+			highToggle.getStyleClass().remove("selected-toggle");
+			setPriorityVisible(1);
+			break;
+		case "Medium":
+			lowToggle.getStyleClass().remove("selected-toggle");
+			medToggle.getStyleClass().add("selected-toggle");
+			highToggle.getStyleClass().remove("selected-toggle");
+			setPriorityVisible(2);
+			break;
+		case "High":
+			lowToggle.getStyleClass().remove("selected-toggle");
+			medToggle.getStyleClass().remove("selected-toggle");
+			highToggle.getStyleClass().add("selected-toggle");
+			setPriorityVisible(3);
+			break;
+		case "All":
+			setPriorityVisible(0);
+			lowToggle.getStyleClass().remove("selected-toggle");
+			medToggle.getStyleClass().remove("selected-toggle");
+			highToggle.getStyleClass().remove("selected-toggle");
+			break;
+		default:
+			break;
+		}
+	}
+	
+	private String getPriorityToggle() {
+		Toggle selectedPriority = priority.getSelectedToggle();
+
+		String priority = "All";
+		if (selectedPriority != null) {
+
+			if (selectedPriority.equals(lowToggle)) {
+				priority = "Low";
+			} else if (selectedPriority.equals(medToggle)) {
+				priority = "Medium";
+			} else if (selectedPriority.equals(highToggle)) {
+				priority = "High";
+			}
+		}
+		
+		return priority;
+	}
+	
+	public void setPriorityVisible(int priority) {
+		AnchorPane taskAnchor;
+		if (priority == 0) {
+			for (Task task : currentTasks) {
+				taskAnchor = currentTaskAnchors.get(task);
+				setTaskVisible(task, taskAnchor);
+			}
+			for (Task task : completedTasks) {
+				taskAnchor = completedTaskAnchors.get(task);
+				setTaskVisible(task, taskAnchor);
+			}
+		} else {
+			for (Task task : currentTasks) {
+				taskAnchor = currentTaskAnchors.get(task);
+				setTaskVisibilityByPriority(task, priority, taskAnchor);
+			}
+			for (Task task : completedTasks) {
+				taskAnchor = completedTaskAnchors.get(task);
+				setTaskVisibilityByPriority(task, priority, taskAnchor);
+			}
+		}
+	}
+
+
+	private void setTaskVisibilityByPriority(Task task, int priority, AnchorPane taskAnchor) {
+		if (!(task.getPriority() == priority)) {
+			taskAnchor.setVisible(false);
+			taskAnchor.setManaged(false);
+		} else {
+			taskAnchor.setVisible(true);
+			taskAnchor.setManaged(true);
+		}
+	}
+
+
 	public void setCategoryVisible(String category) {
 		if (category != null) {
 			AnchorPane taskAnchor;

@@ -72,11 +72,14 @@
                                        <content>
                                           <VBox id="FilterVBox" prefHeight="200.0" prefWidth="298.0">
                                              <children>
-                                                <ToggleButton fx:id="lowToggle" mnemonicParsing="false" text="Low" />
-                                                <ToggleButton fx:id="mediumToggle" mnemonicParsing="false" text="Medium" />
+                                                <ToggleButton fx:id="lowToggle" mnemonicParsing="false" onAction="#sortByPriority" text="Low">
+                                                   <toggleGroup>
+                                                      <ToggleGroup fx:id="priority" />
+                                                   </toggleGroup></ToggleButton>
+                                                <ToggleButton fx:id="medToggle" mnemonicParsing="false" onAction="#sortByPriority" text="Medium" toggleGroup="$priority" />
                                                 <HBox id="FilterHBox" prefHeight="100.0" prefWidth="200.0">
                                                    <children>
-                                                      <ToggleButton fx:id="highToggle" mnemonicParsing="false" text="High" />
+                                                      <ToggleButton fx:id="highToggle" mnemonicParsing="false" onAction="#sortByPriority" text="High" toggleGroup="$priority" />
                                                    </children>
                                                 </HBox>
                                              </children>
