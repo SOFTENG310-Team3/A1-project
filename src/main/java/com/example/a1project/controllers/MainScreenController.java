@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import com.example.a1project.AchievementManager;
+import com.example.a1project.achievement.AchievementManager;
 import com.example.a1project.Task;
 
 import javafx.collections.FXCollections;
@@ -20,10 +20,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.control.Toggle;
-
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 public class MainScreenController extends SceneController implements Initializable {
 	
@@ -292,7 +288,7 @@ public int getTaskIndex(Task task) {
 	private AnchorPane setupTaskItem(Task task){
 		try {
 			FXMLLoader fxmlloader = new FXMLLoader();
-			fxmlloader.setLocation(getClass().getResource("/com/example/a1project/SingleTaskDisplay.fxml"));
+			fxmlloader.setLocation(getClass().getResource("/fxml/SingleTaskDisplay.fxml"));
 			AnchorPane anchor = fxmlloader.load();
 			
 			SingleTaskDisplayController taskDisplay = fxmlloader.getController();
