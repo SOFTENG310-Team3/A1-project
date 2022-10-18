@@ -56,9 +56,9 @@ public class SingleTaskDisplayController {
     @FXML
     void taskCompleted(ActionEvent event) {
     	//TODO update list with completed task in the "completed" section
-    	if (!this.task.isCompleted()) {
+    	if (!this.task.getIsCompleted()) {
     		mainScreen.completeTask(this.task);
-    		this.task.completeTask();
+    		this.task.setIsCompleted();
     	}
     }
 
