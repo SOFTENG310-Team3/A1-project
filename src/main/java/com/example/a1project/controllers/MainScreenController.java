@@ -18,7 +18,7 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
-
+import javafx.scene.layout.StackPane;
 import javafx.scene.control.Toggle;
 
 import javafx.stage.Modality;
@@ -34,10 +34,12 @@ public class MainScreenController extends SceneController implements Initializab
     private GridPane completedTaskGridPane;
     
     @FXML
+    private StackPane darkOverlay;
 	public ToggleButton workToggle, schoolToggle, homeToggle;
 	public ToggleGroup category;
+	
+    ObservableList<Task> currentTasks = FXCollections.observableArrayList();
     
-  ObservableList<Task> currentTasks = FXCollections.observableArrayList();
 	ObservableList<Task> completedTasks = FXCollections.observableArrayList();
 	
 	ObservableMap<Task, AnchorPane> currentTaskAnchors = FXCollections.observableHashMap();
@@ -59,6 +61,7 @@ public class MainScreenController extends SceneController implements Initializab
 	public void addNewTask(ActionEvent event) throws IOException {
 		TaskController taskController = showNewTaskPopup(event);
 		taskController.setMainScreenController(this);
+		this.getDarkOverlay().setVisible(true);
 	}
 	
 	/**
@@ -216,6 +219,9 @@ public int getTaskIndex(Task task) {
 		}
 	}
 	
+	public StackPane getDarkOverlay() {
+		return darkOverlay;
+	}
 	
 	private void updateCurrentTaskDisplay(Task oldTask, Task task, int taskIndex) {
 		AnchorPane anchor = setupTaskItem(task);

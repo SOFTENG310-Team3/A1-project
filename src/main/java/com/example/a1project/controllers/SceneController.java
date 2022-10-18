@@ -80,8 +80,4 @@ public class SceneController {
 		return taskController;
 	}
 	
-	public void closeTaskPopup(ActionEvent event) {
-		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		stage.close();
-	}
 }
