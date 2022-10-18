@@ -2,6 +2,7 @@ package com.example.a1project.controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import com.example.a1project.achievement.AchievementManager;
@@ -34,6 +35,8 @@ public class MainScreenController extends SceneController implements Initializab
 	public ToggleButton workToggle, schoolToggle, homeToggle, lowToggle, medToggle, highToggle;
 	public ToggleGroup category;
 	public ToggleGroup priority;
+	
+	public String[] currentFilters = new String[3];
 	
     ObservableList<Task> currentTasks = FXCollections.observableArrayList();
     
@@ -113,30 +116,39 @@ public class MainScreenController extends SceneController implements Initializab
 			workToggle.getStyleClass().add("selected-toggle");
 			schoolToggle.getStyleClass().remove("selected-toggle");
 			homeToggle.getStyleClass().remove("selected-toggle");
-			setCategoryVisible("Work");
+			currentFilters[0] = "Work";
+			displayFilteredTasks(currentFilters, currentTasks, currentTaskAnchors);
+			displayFilteredTasks(currentFilters, completedTasks, completedTaskAnchors);
 			break;
 		case "School":
 			workToggle.getStyleClass().remove("selected-toggle");
 			schoolToggle.getStyleClass().add("selected-toggle");
 			homeToggle.getStyleClass().remove("selected-toggle");
-			setCategoryVisible("School");
+			currentFilters[0] = "School";
+			displayFilteredTasks(currentFilters, currentTasks, currentTaskAnchors);
+			displayFilteredTasks(currentFilters, completedTasks, completedTaskAnchors);
 			break;
 		case "Home":
 			workToggle.getStyleClass().remove("selected-toggle");
 			schoolToggle.getStyleClass().remove("selected-toggle");
 			homeToggle.getStyleClass().add("selected-toggle");
-			setCategoryVisible("Home");
+			currentFilters[0] = "Home";
+			displayFilteredTasks(currentFilters, currentTasks, currentTaskAnchors);
+			displayFilteredTasks(currentFilters, completedTasks, completedTaskAnchors);
 			break;
 		case "All":
-			setCategoryVisible("All");
 			workToggle.getStyleClass().remove("selected-toggle");
 			schoolToggle.getStyleClass().remove("selected-toggle");
 			homeToggle.getStyleClass().remove("selected-toggle");
+			currentFilters[0] = null;
+			displayFilteredTasks(currentFilters, currentTasks, currentTaskAnchors);
+			displayFilteredTasks(currentFilters, completedTasks, completedTaskAnchors);
 			break;
 		default:
 			break;
 		}
 	}
+	
 	
 	public void sortByPriority(ActionEvent event) {
 		String selectedPriority = getPriorityToggle();
@@ -146,30 +158,39 @@ public class MainScreenController extends SceneController implements Initializab
 			lowToggle.getStyleClass().add("selected-toggle");
 			medToggle.getStyleClass().remove("selected-toggle");
 			highToggle.getStyleClass().remove("selected-toggle");
-			setPriorityVisible(1);
+			currentFilters[1] = "1";
+			displayFilteredTasks(currentFilters, currentTasks, currentTaskAnchors);
+			displayFilteredTasks(currentFilters, completedTasks, completedTaskAnchors);
 			break;
 		case "Medium":
 			lowToggle.getStyleClass().remove("selected-toggle");
 			medToggle.getStyleClass().add("selected-toggle");
 			highToggle.getStyleClass().remove("selected-toggle");
-			setPriorityVisible(2);
+			currentFilters[1] = "2";
+			displayFilteredTasks(currentFilters, currentTasks, currentTaskAnchors);
+			displayFilteredTasks(currentFilters, completedTasks, completedTaskAnchors);
 			break;
 		case "High":
 			lowToggle.getStyleClass().remove("selected-toggle");
 			medToggle.getStyleClass().remove("selected-toggle");
 			highToggle.getStyleClass().add("selected-toggle");
-			setPriorityVisible(3);
+			currentFilters[1] = "3";
+			displayFilteredTasks(currentFilters, currentTasks, currentTaskAnchors);
+			displayFilteredTasks(currentFilters, completedTasks, completedTaskAnchors);
 			break;
 		case "All":
-			setPriorityVisible(0);
 			lowToggle.getStyleClass().remove("selected-toggle");
 			medToggle.getStyleClass().remove("selected-toggle");
 			highToggle.getStyleClass().remove("selected-toggle");
+			currentFilters[1] = null;
+			displayFilteredTasks(currentFilters, currentTasks, currentTaskAnchors);
+			displayFilteredTasks(currentFilters, completedTasks, completedTaskAnchors);
 			break;
 		default:
 			break;
 		}
 	}
+	
 	
 	private String getPriorityToggle() {
 		Toggle selectedPriority = priority.getSelectedToggle();
@@ -189,79 +210,47 @@ public class MainScreenController extends SceneController implements Initializab
 		return priority;
 	}
 	
-	public void setPriorityVisible(int priority) {
-		AnchorPane taskAnchor;
-		if (priority == 0) {
-			for (Task task : currentTasks) {
-				taskAnchor = currentTaskAnchors.get(task);
-				setTaskVisible(task, taskAnchor);
-			}
-			for (Task task : completedTasks) {
-				taskAnchor = completedTaskAnchors.get(task);
-				setTaskVisible(task, taskAnchor);
-			}
-		} else {
-			for (Task task : currentTasks) {
-				taskAnchor = currentTaskAnchors.get(task);
-				setTaskVisibilityByPriority(task, priority, taskAnchor);
-			}
-			for (Task task : completedTasks) {
-				taskAnchor = completedTaskAnchors.get(task);
-				setTaskVisibilityByPriority(task, priority, taskAnchor);
-			}
+	public void displayFilteredTasks(String[] filters, ObservableList<Task> taskList, ObservableMap<Task, AnchorPane> taskAnchorPanes) {
+		ArrayList<Task> tasksToDisplay = new ArrayList<Task>();
+		for(Task task: taskList) {
+			tasksToDisplay.add(task);
 		}
-	}
-
-
-	private void setTaskVisibilityByPriority(Task task, int priority, AnchorPane taskAnchor) {
-		if (!(task.getPriority() == priority)) {
-			taskAnchor.setVisible(false);
-			taskAnchor.setManaged(false);
-		} else {
-			taskAnchor.setVisible(true);
-			taskAnchor.setManaged(true);
-		}
-	}
-
-
-	public void setCategoryVisible(String category) {
-		if (category != null) {
-			AnchorPane taskAnchor;
-			if (category.equals("All")) {
-				for (Task task : currentTasks) {
-					taskAnchor = currentTaskAnchors.get(task);
-					setTaskVisible(task, taskAnchor);
+		
+		for(String filter: filters) {
+			if(filter != null) {
+				tasksToDisplay.removeAll(getTasksWithoutFilter(filter,tasksToDisplay));
 				}
-				for (Task task : completedTasks) {
-					taskAnchor = completedTaskAnchors.get(task);
-					setTaskVisible(task, taskAnchor);
-				}
+			}
+		
+		AnchorPane currentTaskAnchor;
+		for(Task task: taskList) {
+			currentTaskAnchor = taskAnchorPanes.get(task);
+			if(tasksToDisplay.contains(task)) {
+				setTaskVisible(currentTaskAnchor);
 			} else {
-				for (Task task : currentTasks) {
-					taskAnchor = currentTaskAnchors.get(task);
-					setTaskVisibilityByCategory(task, category, taskAnchor);
-				}
-				for (Task task : completedTasks) {
-					taskAnchor = completedTaskAnchors.get(task);
-					setTaskVisibilityByCategory(task, category, taskAnchor);
-				}
+				setTaskInvisible(currentTaskAnchor);
 			}
 		}
 	}
-	
-	public void setTaskVisibilityByCategory(Task task, String category, AnchorPane taskAnchor) {
-		if (!task.getCategory().equals(category)) {
-			taskAnchor.setVisible(false);
-			taskAnchor.setManaged(false);
-		} else {
-			taskAnchor.setVisible(true);
-			taskAnchor.setManaged(true);
+
+		public ArrayList<Task> getTasksWithoutFilter(String filter, ArrayList<Task> currentTasks) {
+			ArrayList<Task> filteredOutTasks = new ArrayList<Task>();
+			for (Task task : currentTasks) {
+				if (!(task.getCategory().equals(filter) ||String.valueOf(task.getPriority()).equals(filter) || task.getDueDate().equals((filter)))) {
+					filteredOutTasks.add(task);
+				}
+			}
+			return filteredOutTasks;
 		}
-	}
 	
-	public void setTaskVisible(Task task, AnchorPane taskAnchor) {
+	public void setTaskVisible(AnchorPane taskAnchor) {
 		taskAnchor.setVisible(true);
 		taskAnchor.setManaged(true);
+	}
+	
+	public void setTaskInvisible(AnchorPane taskAnchor) {
+		taskAnchor.setVisible(false);
+		taskAnchor.setManaged(false);
 	}
 
 	public String getCategoryToggle() {
@@ -336,7 +325,8 @@ public int getTaskIndex(Task task) {
 		currentTaskGridPane.add(anchor, 0, currentTaskGridPane.getRowCount());
 		currentTaskAnchors.put(task, anchor);
 		
-		setCategoryVisible(getCategoryToggle());
+		displayFilteredTasks(currentFilters,currentTasks,currentTaskAnchors);
+		
 	}
 	
 	private void newCompletedTaskDisplay(Task task) {
