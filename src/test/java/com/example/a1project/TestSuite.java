@@ -1,5 +1,7 @@
 package com.example.a1project;
 
+import com.example.a1project.achievement.Achievement;
+import com.example.a1project.achievement.AchievementMetric;
 import com.example.a1project.controllers.TaskController;
 import org.junit.Before;
 import org.junit.Test;

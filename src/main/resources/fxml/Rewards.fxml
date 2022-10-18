@@ -26,7 +26,7 @@
       </Text>
       <ImageView fitHeight="64.0" fitWidth="47.0" layoutX="670.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@images/medal.png" />
+            <Image url="@../images/medal.png" />
          </image>
       </ImageView>
       <Button layoutX="41.0" layoutY="27.0" mnemonicParsing="false" onAction="#switchToMainScreen" style="-fx-background-color: #77B3D4;">
@@ -35,7 +35,7 @@
                <children>
                   <ImageView fitHeight="44.0" fitWidth="26.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/arrow.png" />
+                        <Image url="@../images/arrow.png" />
                      </image>
                   </ImageView>
                </children>

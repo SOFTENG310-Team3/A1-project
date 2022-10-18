@@ -19,7 +19,7 @@ public class SceneController {
 	private Parent root;
 	
 	public void switchToMainScreen(ActionEvent event) throws IOException {
-		root = FXMLLoader.load(getClass().getResource("../MainScreen.fxml"));
+		root = FXMLLoader.load(getClass().getResource("/fxml/MainScreen.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
@@ -27,7 +27,7 @@ public class SceneController {
 	}
 	
 	public void switchToRewards(ActionEvent event) throws IOException {
-		root = FXMLLoader.load(getClass().getResource("../Rewards.fxml"));
+		root = FXMLLoader.load(getClass().getResource("/fxml/Rewards.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
@@ -36,7 +36,7 @@ public class SceneController {
 	
 	public TaskController showNewTaskPopup(ActionEvent event) throws IOException {
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("/com/example/a1project/Task.fxml"));
+		loader.setLocation(getClass().getResource("/fxml/Task.fxml"));
 		
 		root = loader.load();
 		
@@ -57,7 +57,7 @@ public class SceneController {
 	
 	public TaskController showEditTaskPopup(ActionEvent event) throws IOException {
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("/com/example/a1project/Task.fxml"));
+		loader.setLocation(getClass().getResource("/fxml/Task.fxml"));
 		
 		root = loader.load();
 		
