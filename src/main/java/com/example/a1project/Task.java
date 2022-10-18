@@ -25,7 +25,6 @@ public class Task {
 	 */
 	public Task(String name, String description, String location, String category, String frequency, String dueDate, String dueTime,
 			int priority) {
-		super();
 		this.name = name;
 		this.description = description;
 		this.location = location;
@@ -34,6 +33,10 @@ public class Task {
 		this.dueDate = dueDate;
 		this.dueTime = dueTime;
 		this.priority = priority;
+		this.isCompleted = false;
+	}
+
+	public Task(){
 	}
 	
 	/**
@@ -151,14 +154,14 @@ public class Task {
 	/**
 	 * @return the isCompleted
 	 */
-	public boolean isCompleted() {
+	public boolean getIsCompleted() {
 		return isCompleted;
 	}
 
 	/**
 	 * completes the task
 	 */
-	public void completeTask() {
+	public void setIsCompleted() {
 		this.isCompleted = true;
 	}
 	
