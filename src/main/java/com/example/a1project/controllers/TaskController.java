@@ -134,7 +134,7 @@ public class TaskController extends SceneController implements Initializable {
 		
 		if(pass) {
 			Task task = new Task(name, description, location, category, repeat, dueDate, dueTime, priorityNum);
-			mainScreen.addTaskToList(task);
+			mainScreen.addTaskToCurrentList(task);
 		}
 		
 	}
@@ -153,7 +153,7 @@ public class TaskController extends SceneController implements Initializable {
 			editingTask.setDueTime(dueTime);
 			editingTask.setPriority(priorityNum);
 			
-			boolean isCompleted = editingTask.isCompleted();
+			boolean isCompleted = editingTask.getIsCompleted();
 			
 			mainScreen.saveTaskToList(taskIndex,editingTask, isCompleted );
 		}
