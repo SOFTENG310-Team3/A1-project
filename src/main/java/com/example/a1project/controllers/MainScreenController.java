@@ -19,6 +19,8 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.control.Label;
+import javafx.scene.control.TitledPane;
 import javafx.scene.control.Toggle;
 
 import javafx.stage.Modality;
@@ -38,8 +40,12 @@ public class MainScreenController extends SceneController implements Initializab
 	public ToggleButton workToggle, schoolToggle, homeToggle;
 	public ToggleGroup category;
 	
+	@FXML
+	private Label categoryFilterTag;
+	@FXML
+	private TitledPane categoryTitledPane;
+	
     ObservableList<Task> currentTasks = FXCollections.observableArrayList();
-    
 	ObservableList<Task> completedTasks = FXCollections.observableArrayList();
 	
 	ObservableMap<Task, AnchorPane> currentTaskAnchors = FXCollections.observableHashMap();
@@ -117,21 +123,28 @@ public class MainScreenController extends SceneController implements Initializab
 			schoolToggle.getStyleClass().remove("selected-toggle");
 			homeToggle.getStyleClass().remove("selected-toggle");
 			setCategoryVisible("Work");
+			setCategoryTag("Work");
 			break;
 		case "School":
 			workToggle.getStyleClass().remove("selected-toggle");
 			schoolToggle.getStyleClass().add("selected-toggle");
 			homeToggle.getStyleClass().remove("selected-toggle");
 			setCategoryVisible("School");
+			setCategoryTag("School");
 			break;
 		case "Home":
 			workToggle.getStyleClass().remove("selected-toggle");
 			schoolToggle.getStyleClass().remove("selected-toggle");
 			homeToggle.getStyleClass().add("selected-toggle");
 			setCategoryVisible("Home");
+			setCategoryTag("Home");
 			break;
 		case "All":
 			setCategoryVisible("All");
+			workToggle.getStyleClass().remove("selected-toggle");
+			schoolToggle.getStyleClass().remove("selected-toggle");
+			homeToggle.getStyleClass().remove("selected-toggle");
+			setCategoryTag("All");
 			break;
 		default:
 			break;
@@ -161,6 +174,28 @@ public class MainScreenController extends SceneController implements Initializab
 				}
 			}
 		}
+	}
+	
+	public void setCategoryTag(String category) {
+		
+		switch(category) {
+		case "Work":
+			categoryFilterTag.setVisible(true);
+			categoryFilterTag.setText("Work");
+			break;
+		case "School":
+			categoryFilterTag.setVisible(true);
+			categoryFilterTag.setText("School");
+			break;
+		case "Home":
+			categoryFilterTag.setVisible(true);
+			categoryFilterTag.setText("Home");
+			break;
+		case "All":
+			categoryFilterTag.setVisible(false);
+			break;
+		}
+		
 	}
 	
 	public void setTaskVisibilityByCategory(Task task, String category, AnchorPane taskAnchor) {
