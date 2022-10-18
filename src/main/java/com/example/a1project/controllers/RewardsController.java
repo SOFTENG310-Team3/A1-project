@@ -4,8 +4,8 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import com.example.a1project.Achievement;
-import com.example.a1project.AchievementManager;
+import com.example.a1project.achievement.Achievement;
+import com.example.a1project.achievement.AchievementManager;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -35,7 +35,7 @@ public class RewardsController extends SceneController implements Initializable 
 			for (Achievement achievement : achievements) {
 
 				FXMLLoader fxmlloader = new FXMLLoader();
-				fxmlloader.setLocation(getClass().getResource("/com/example/a1project/SingleAchievement.fxml"));
+				fxmlloader.setLocation(getClass().getResource("/fxml/SingleAchievement.fxml"));
 				AnchorPane anchor = fxmlloader.load();
 
 				CardViewController cardView = fxmlloader.getController();

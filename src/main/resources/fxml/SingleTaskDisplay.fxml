@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane fx:id="baseAnchorPane" prefHeight="71.0" prefWidth="1098.0" stylesheets="@Task.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.a1project.controllers.SingleTaskDisplayController">
+<AnchorPane fx:id="baseAnchorPane" prefHeight="71.0" prefWidth="1098.0" stylesheets="@../css/Task.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.a1project.controllers.SingleTaskDisplayController">
    <children>
       <GridPane fx:id="taskGridPane" alignment="CENTER" prefHeight="90.0" prefWidth="575.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
