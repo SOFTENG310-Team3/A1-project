@@ -1,14 +1,19 @@
 package com.example.a1project.controllers;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import com.example.a1project.achievement.AchievementManager;
 import com.example.a1project.Task;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.collections.ObservableMap;
 import javafx.event.ActionEvent;
@@ -20,6 +25,8 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.control.Label;
+import javafx.scene.control.TitledPane;
 import javafx.scene.control.Toggle;
 
 public class MainScreenController extends SceneController implements Initializable {
@@ -38,8 +45,10 @@ public class MainScreenController extends SceneController implements Initializab
 	
 	public String[] currentFilters = new String[3];
 	
+	@FXML
+	private Label categoryFilterTag, priorityFilterTag, dueDateFilterTage;
+	
     ObservableList<Task> currentTasks = FXCollections.observableArrayList();
-    
 	ObservableList<Task> completedTasks = FXCollections.observableArrayList();
 	
 	ObservableMap<Task, AnchorPane> currentTaskAnchors = FXCollections.observableHashMap();
@@ -47,11 +56,45 @@ public class MainScreenController extends SceneController implements Initializab
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
+
 		// Consider adding listeners to the ObservableLists here (e.g: onChanged) to react whenever changes are made
 		// Achieved by using:
-		
-		// currentTasks.addListener(new ListChangeListener<Task>() { }});
+		addTasksToList(getTasksFromFile("currentTasks"));
+		addTasksToList(getTasksFromFile("completedTasks"));
+
+		currentTasks.addListener((ListChangeListener<Task>) c -> writeTasks(currentTasks, "currentTasks"));
+		completedTasks.addListener((ListChangeListener<Task>) c -> writeTasks(completedTasks, "completedTasks"));
+	}
+
+	/**
+	 * reads a list of tasks from a json file
+	 * @param fileName the name of the file to read from
+	 * @return a list of tasks
+	 */
+	private List<Task> getTasksFromFile(String fileName) {
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			File inputFile = new File(getClass().getResource("/json/" + fileName + ".json").toURI());
+			List<Task> tasks = mapper.readValue(inputFile,  mapper.getTypeFactory().constructCollectionType(List.class, Task.class));
+			return tasks;
+		} catch (URISyntaxException | IOException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	/**
+	 * write a given list of tasks to a file in json format
+	 * @param currentTasks the tasks to write to the file
+	 * @param fileName the name of the json file to write to
+	 */
+	private void writeTasks(List<Task> currentTasks, String fileName) {
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			File outputFile = new File(getClass().getResource("/json/" + fileName + ".json").toURI());
+			mapper.writeValue(outputFile, currentTasks);
+		} catch (IOException | URISyntaxException e) {
+			throw new RuntimeException(e);
+		}
 	}
 	
 	
@@ -70,14 +113,31 @@ public class MainScreenController extends SceneController implements Initializab
 	public void showAllTasks() {
 		// TODO: remove sorting filters and show all tasks
 	}
+
+	/**
+	 * adds a list of tasks to the displayed tasks
+	 * @param tasksToAdd the list of tasks to add to the display
+	 */
+	private void addTasksToList(List<Task> tasksToAdd) {
+		for (Task task : tasksToAdd){
+			if(task.getIsCompleted()){
+				addTaskToCompletedList(task);
+			} else {
+				addTaskToCurrentList(task);
+			}
+		}
+	}
 	
 	/**
 	 * Add created task to current tasks. Called from Task screen by TaskController
 	 * @param task Task to add
 	 */
-	public void addTaskToList(Task task) {
-		currentTasks.add(task);
+	public void addTaskToCurrentList(Task task) {
 		newCurrentTaskDisplay(task);
+	}
+
+	public void addTaskToCompletedList(Task task) {
+		newCompletedTaskDisplay(task);
 	}
 	
 	public void saveTaskToList(int taskIndex, Task editedTask, boolean isCompleted) {
@@ -112,40 +172,46 @@ public class MainScreenController extends SceneController implements Initializab
 		String selectedCategory = getCategoryToggle();
 
 		switch (selectedCategory) {
-		case "Work":
+		case "Work" -> {
 			workToggle.getStyleClass().add("selected-toggle");
 			schoolToggle.getStyleClass().remove("selected-toggle");
 			homeToggle.getStyleClass().remove("selected-toggle");
+			setCategoryTag("Work");
 			currentFilters[0] = "Work";
 			displayFilteredTasks(currentFilters, currentTasks, currentTaskAnchors);
 			displayFilteredTasks(currentFilters, completedTasks, completedTaskAnchors);
-			break;
-		case "School":
+		}
+		case "School" -> {
 			workToggle.getStyleClass().remove("selected-toggle");
 			schoolToggle.getStyleClass().add("selected-toggle");
 			homeToggle.getStyleClass().remove("selected-toggle");
+			setCategoryTag("School");
 			currentFilters[0] = "School";
 			displayFilteredTasks(currentFilters, currentTasks, currentTaskAnchors);
 			displayFilteredTasks(currentFilters, completedTasks, completedTaskAnchors);
-			break;
-		case "Home":
+		}
+		case "Home" ->{
 			workToggle.getStyleClass().remove("selected-toggle");
 			schoolToggle.getStyleClass().remove("selected-toggle");
 			homeToggle.getStyleClass().add("selected-toggle");
+			setCategoryTag("Home");
 			currentFilters[0] = "Home";
 			displayFilteredTasks(currentFilters, currentTasks, currentTaskAnchors);
 			displayFilteredTasks(currentFilters, completedTasks, completedTaskAnchors);
-			break;
-		case "All":
+		}
+		case "All" ->{
 			workToggle.getStyleClass().remove("selected-toggle");
 			schoolToggle.getStyleClass().remove("selected-toggle");
 			homeToggle.getStyleClass().remove("selected-toggle");
+			setCategoryTag("All");
 			currentFilters[0] = null;
 			displayFilteredTasks(currentFilters, currentTasks, currentTaskAnchors);
 			displayFilteredTasks(currentFilters, completedTasks, completedTaskAnchors);
-			break;
-		default:
-			break;
+		}
+		default -> {
+			
+		}
+
 		}
 	}
 	
@@ -158,6 +224,7 @@ public class MainScreenController extends SceneController implements Initializab
 			lowToggle.getStyleClass().add("selected-toggle");
 			medToggle.getStyleClass().remove("selected-toggle");
 			highToggle.getStyleClass().remove("selected-toggle");
+			setPriorityTag("Low");
 			currentFilters[1] = "1";
 			displayFilteredTasks(currentFilters, currentTasks, currentTaskAnchors);
 			displayFilteredTasks(currentFilters, completedTasks, completedTaskAnchors);
@@ -166,6 +233,7 @@ public class MainScreenController extends SceneController implements Initializab
 			lowToggle.getStyleClass().remove("selected-toggle");
 			medToggle.getStyleClass().add("selected-toggle");
 			highToggle.getStyleClass().remove("selected-toggle");
+			setPriorityTag("Medium");
 			currentFilters[1] = "2";
 			displayFilteredTasks(currentFilters, currentTasks, currentTaskAnchors);
 			displayFilteredTasks(currentFilters, completedTasks, completedTaskAnchors);
@@ -174,6 +242,7 @@ public class MainScreenController extends SceneController implements Initializab
 			lowToggle.getStyleClass().remove("selected-toggle");
 			medToggle.getStyleClass().remove("selected-toggle");
 			highToggle.getStyleClass().add("selected-toggle");
+			setPriorityTag("High");
 			currentFilters[1] = "3";
 			displayFilteredTasks(currentFilters, currentTasks, currentTaskAnchors);
 			displayFilteredTasks(currentFilters, completedTasks, completedTaskAnchors);
@@ -182,6 +251,7 @@ public class MainScreenController extends SceneController implements Initializab
 			lowToggle.getStyleClass().remove("selected-toggle");
 			medToggle.getStyleClass().remove("selected-toggle");
 			highToggle.getStyleClass().remove("selected-toggle");
+			setPriorityTag("All");
 			currentFilters[1] = null;
 			displayFilteredTasks(currentFilters, currentTasks, currentTaskAnchors);
 			displayFilteredTasks(currentFilters, completedTasks, completedTaskAnchors);
@@ -243,6 +313,57 @@ public class MainScreenController extends SceneController implements Initializab
 			return filteredOutTasks;
 		}
 	
+	public void setCategoryTag(String category) {
+		
+		switch(category) {
+		case "Work":
+			categoryFilterTag.setVisible(true);
+			categoryFilterTag.setText("Work");
+			break;
+		case "School":
+			categoryFilterTag.setVisible(true);
+			categoryFilterTag.setText("School");
+			break;
+		case "Home":
+			categoryFilterTag.setVisible(true);
+			categoryFilterTag.setText("Home");
+			break;
+		case "All":
+			categoryFilterTag.setVisible(false);
+			break;
+		default:
+			break;
+		}
+		
+	}
+	
+	public void setPriorityTag(String priority) {
+		switch(priority) {
+		case "Low":
+			priorityFilterTag.setVisible(true);
+			priorityFilterTag.setText("Low");
+			break;
+		case "Medium":
+			priorityFilterTag.setVisible(true);
+			priorityFilterTag.setText("Medium");
+			break;
+		case "High":
+			priorityFilterTag.setVisible(true);
+			priorityFilterTag.setText("High");
+			break;
+		case "All":
+			priorityFilterTag.setVisible(false);
+			break;
+		default:
+			break;
+		}
+	}
+	
+	public void setDueDateTag() {
+		//TODO: Method to show the current due date filter next to the Due Date titledPane. Implementation to be done with sorting by due date.
+	}
+	
+	
 	public void setTaskVisible(AnchorPane taskAnchor) {
 		taskAnchor.setVisible(true);
 		taskAnchor.setManaged(true);
@@ -286,8 +407,8 @@ public class MainScreenController extends SceneController implements Initializab
 		}
 	}
 
-public int getTaskIndex(Task task) {
-		if(task.isCompleted()) {
+	public int getTaskIndex(Task task) {
+		if(task.getIsCompleted()) {
 			return completedTasks.indexOf(task);
 		} else {
 			return currentTasks.indexOf(task);
@@ -324,6 +445,8 @@ public int getTaskIndex(Task task) {
 		// Add to column 0 of GridPane
 		currentTaskGridPane.add(anchor, 0, currentTaskGridPane.getRowCount());
 		currentTaskAnchors.put(task, anchor);
+
+		currentTasks.add(task);
 		
 		displayFilteredTasks(currentFilters,currentTasks,currentTaskAnchors);
 		

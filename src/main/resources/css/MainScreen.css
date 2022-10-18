@@ -32,6 +32,10 @@
 	-fx-background-color: transparent;
 }
 
+.titled-pane > .title > .hbox > .text{
+	-fx-fill: white;
+}
+
 .titled-pane > .title > .text {
 	-fx-fill: white;
 }
@@ -114,4 +118,16 @@
 
 #resetFilterButton:hover { 
 	-fx-background-color: -highlight-colour;
+}
+
+#titledPaneTextTitle{
+	-fx-fill: white;
+}
+
+#selectedFilterTag{
+	-fx-background-color: white;
+	-fx-background-radius: 10;
+	-fx-text-fill: -main-color;
+	-fx-font-size: 20;
+	-fx-font-weight: bold;
 }
