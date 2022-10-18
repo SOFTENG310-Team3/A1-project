@@ -1,4 +1,4 @@
-package com.example.a1project;
+package com.example.a1project.achievement;
 
 public enum AchievementMetric {
 	TASKS_COMPLETE{

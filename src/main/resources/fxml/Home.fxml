@@ -20,7 +20,7 @@
       </Text>
       <ImageView fitHeight="424.0" fitWidth="489.0" layoutX="80.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@images/pencil.png" />
+            <Image url="@../images/pencil.png" />
          </image>
       </ImageView>
       <Button fx:id="homeButton" contentDisplay="RIGHT" layoutX="386.0" layoutY="572.0" mnemonicParsing="false" onAction="#switchToMainScreen" prefHeight="124.0" prefWidth="431.0" style="-fx-background-color: #77B3D4;" text="Get Started" textFill="WHITE">
@@ -32,7 +32,7 @@
                <children>
                   <ImageView fitHeight="44.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/arrow.png" />
+                        <Image url="@../images/arrow.png" />
                      </image>
                   </ImageView>
                </children>

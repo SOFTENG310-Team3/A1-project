@@ -14,7 +14,7 @@
          <children>
             <ImageView fx:id="trophyImageView" fitHeight="71.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@images/trophyblank.png" />
+                  <Image url="@../images/trophyblank.png" />
                </image>
             </ImageView>
             <Label fx:id="achievementDescription" alignment="CENTER" disable="true" text="Name" textFill="#00000099">
