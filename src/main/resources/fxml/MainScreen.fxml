@@ -51,7 +51,7 @@
                                  <panes>
                                     <TitledPane animated="false" text="Categories">
                                        <content>
-                                          <VBox fx:id="categoriesVBox" prefHeight="200.0" prefWidth="298.0">
+                                          <VBox id="FilterVBox" fx:id="categoriesVBox" prefHeight="200.0" prefWidth="298.0">
                                              <children>
                                                 <ToggleButton fx:id="workToggle" mnemonicParsing="false" onAction="#sortByCategory" text="Work">
                                                    <toggleGroup>
@@ -59,7 +59,7 @@
                                                    </toggleGroup>
                                                 </ToggleButton>
                                                 <ToggleButton fx:id="schoolToggle" mnemonicParsing="false" onAction="#sortByCategory" text="School" toggleGroup="$category" />
-                                                <HBox id="categoriesHBox" prefHeight="100.0" prefWidth="200.0">
+                                                <HBox id="FilterHBox" prefHeight="100.0" prefWidth="200.0">
                                                    <children>
                                                       <ToggleButton fx:id="homeToggle" mnemonicParsing="false" onAction="#sortByCategory" text="Home" toggleGroup="$category" />
                                                    </children>
@@ -70,7 +70,17 @@
                                     </TitledPane>
                                     <TitledPane animated="false" text="Priority">
                                        <content>
-                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                          <VBox id="FilterVBox" prefHeight="200.0" prefWidth="298.0">
+                                             <children>
+                                                <ToggleButton fx:id="lowToggle" mnemonicParsing="false" text="Low" />
+                                                <ToggleButton fx:id="mediumToggle" mnemonicParsing="false" text="Medium" />
+                                                <HBox id="FilterHBox" prefHeight="100.0" prefWidth="200.0">
+                                                   <children>
+                                                      <ToggleButton fx:id="highToggle" mnemonicParsing="false" text="High" />
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
                                        </content>
                                     </TitledPane>
                                     <TitledPane animated="false" text="Due Date">

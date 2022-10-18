@@ -31,8 +31,8 @@ public class MainScreenController extends SceneController implements Initializab
     
     @FXML
     private StackPane darkOverlay;
-	public ToggleButton workToggle, schoolToggle, homeToggle;
-	public ToggleGroup category;
+	public ToggleButton workToggle, schoolToggle, homeToggle, lowToggle, medToggle, highToggle;
+	public ToggleGroup category, priority;
 	
     ObservableList<Task> currentTasks = FXCollections.observableArrayList();
     
@@ -48,6 +48,7 @@ public class MainScreenController extends SceneController implements Initializab
 		// Achieved by using:
 		
 		// currentTasks.addListener(new ListChangeListener<Task>() { }});
+		lowToggle.setText("Hello");
 	}
 	
 	
