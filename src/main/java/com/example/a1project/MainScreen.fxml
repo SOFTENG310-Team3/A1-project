@@ -82,15 +82,41 @@
                                           </HBox>
                                        </graphic>
                                     </TitledPane>
-                                    <TitledPane animated="false" text="Priority">
+                                    <TitledPane animated="false">
                                        <content>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                                        </content>
+                                       <graphic>
+                                          <HBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="51.0" prefWidth="248.0">
+                                             <children>
+                                                <Text id="titledPaneTextTitle" fx:id="priorityFilterText" strokeType="OUTSIDE" strokeWidth="0.0" text="Priority" />
+                                                <HBox fx:id="prioritySeparator" prefHeight="100.0" prefWidth="80.0">
+                                                   <HBox.margin>
+                                                      <Insets />
+                                                   </HBox.margin>
+                                                </HBox>
+                                                <Label id="selectedFilterTag" fx:id="priorityFilterTag" text="Current Filter" visible="false" />
+                                             </children>
+                                          </HBox>
+                                       </graphic>
                                     </TitledPane>
-                                    <TitledPane animated="false" text="Due Date">
+                                    <TitledPane animated="false">
                                        <content>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                                        </content>
+                                       <graphic>
+                                          <HBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="51.0" prefWidth="248.0">
+                                             <children>
+                                                <Text id="titledPaneTextTitle" fx:id="dueDateFilterText" strokeType="OUTSIDE" strokeWidth="0.0" text="Due Date" />
+                                                <HBox fx:id="dueDateSeparator" prefHeight="100.0" prefWidth="80.0">
+                                                   <HBox.margin>
+                                                      <Insets />
+                                                   </HBox.margin>
+                                                </HBox>
+                                                <Label id="selectedFilterTag" fx:id="dueDateFilterTag" text="Current Filter" visible="false" />
+                                             </children>
+                                          </HBox>
+                                       </graphic>
                                     </TitledPane>
                                  </panes>
                               </Accordion>

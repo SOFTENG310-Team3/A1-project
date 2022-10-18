@@ -41,9 +41,7 @@ public class MainScreenController extends SceneController implements Initializab
 	public ToggleGroup category;
 	
 	@FXML
-	private Label categoryFilterTag;
-	@FXML
-	private TitledPane categoryTitledPane;
+	private Label categoryFilterTag, priorityFilterTag, dueDateFilterTage;
 	
     ObservableList<Task> currentTasks = FXCollections.observableArrayList();
 	ObservableList<Task> completedTasks = FXCollections.observableArrayList();
@@ -196,6 +194,14 @@ public class MainScreenController extends SceneController implements Initializab
 			break;
 		}
 		
+	}
+	
+	public void setPriorityTag() {
+		//TODO: Method to show the current priority filter next to the Priority titledPane. Implementation to be done with sorting by priority.
+	}
+	
+	public void setDueDateTag() {
+		//TODO: Method to show the current due date filter next to the Due Date titledPane. Implementation to be done with sorting by due date.
 	}
 	
 	public void setTaskVisibilityByCategory(Task task, String category, AnchorPane taskAnchor) {
